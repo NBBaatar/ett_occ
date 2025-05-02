@@ -79,52 +79,19 @@
         </div>
     </div>
     <div id='search_list' class="justify-center flex items-center  p-4  sm:items-center sm:pt-0"></div>
-    <div>
-      {{-- <div class="mb-1 p-1 justify-center flex items-center sm:items-center sm:pt-0">
-        <label
-            class="focus-within:ring-2 focus-within:ring-blue-500 justify-center block text-gray-700 text-lg font-bold mb-4"
-            for="password">
-            Сүүлд уншигдсан байдал
-        </label>
-    </div> --}}
-    <div id='log_list' class="grid grid-flow-col grid-rows-3 gap-4 justify-center flex items-center  p-2 ">
-    </div>
-    <div class="flex items-stretch justify-center items-center  p-2  sm:items-center sm:pt-0 grid grid-cols-4 gap-4">
-      <div class="justify-center flex items-center  p-2 py-4 col-span-2">
-          <table id="all_logs" class="shadow-lg w-full border-collapse border border-gray-300">
-                <thead>
-                    <tr>
-                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Овог</th>
-                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Нэр</th>
-                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Карт уншигдсан</th>
-                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Ажилтын зураг</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-      </div>
-      <div class="justify-center flex items-center  p-2 py-12 col-span-2">
-        <table id="error_logs" class="shadow-lg w-full border-collapse border border-gray-300">
-                <thead>
-                    <tr>
-                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Картын дугаар</th>
-                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Төлөв</th>
-                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Уншигдсан огноо</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-      </div>
-    </div>
+   <div class="grid grid-cols-2 gap-4 p-4 overflow-y-scroll max-h-[300px] border-collapse border border-gray-300 order-last">
+      <label class="flex justify-center text-lg font-bold ">Сүүлд уншигдсан карт:</label>
+      <table id="all_logs" class="overflow-y-scroll shadow-lg w-full border-collapse border border-gray-300 table-auto table-auto overflow-scroll w-full p-4 gap-2">
+      <label class="flex justify-center text-lg font-bold">Сүүлд уншигдаагүй картын мэдээлэл:</label>
+      <table id="error_logs" class="overflow-y-scroll shadow-lg w-full border-collapse border border-gray-300 table-auto table-auto overflow-scroll w-full p-4 gap-2">
+   </div>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
     </script>
     <script>
         $(document).ready(function() {
+            
             $('#password').on("keydown", function(event) {
                 if (event.keyCode == 13) {
                     event.preventDefault();
@@ -147,73 +114,58 @@
                             data: {
                                 '_token': '{{ csrf_token() }}',
                                 'search': query,
-                  
                             },
                             success: function(data) {
                                 // $('#all_list').html(data);
                                 document.getElementById("password").value = '';
-
                             }
-                        })
+                        }), 
+                        $.ajax({
+                            url: 'logs',
+                            type: 'GET',
+                            data: {
+                            '_token': '{{ csrf_token() }}',
+                            },
+                              success: function(data) {
+                                var obj = data;
+                                var tableContent = '';
+                                // console.log("The Logged Data :  ", obj);
+                                for (var i = 0; i < obj.length; i++) {
+                                    tableContent += '<tr>';
+                                    tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].fname + '</td>';
+                                    tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].lname + '</td>';
+                                    tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].created_at + '</td>';
+                                    tableContent += '<td class="border border-gray-300 p-4 m-4">' + '<img src="storage/' + obj[i].photo +
+                                        '" width="50" height="70">' + '</td>';
+                                    tableContent += '</tr>';
+                                    }
+                                    $('#all_logs').append(tableContent);
+                              }
+                        }), 
+                         $.ajax({
+                          url: 'logs_error',
+                          type: 'GET',
+                          data: {
+                              '_token': '{{ csrf_token() }}',
+                          },
+                          success: function(data_error){
+                            var obj_error = data_error;
+                            var tableContent1 = '';
+                            // console.log("The Logged Data In Error:  ", obj_error);
+                            for (var i = 0; i < obj_error.length; i++) {
+                                tableContent1 += '<tr>';
+                                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].card_number + '</td>';
+                                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].is_inserted + '</td>';
+                                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].created_at + '</td>';
+                                tableContent1 += '</tr>';
+                            }
+                            $('#error_logs').append(tableContent1);
+                          }
+                      })
                 }
             });
         });
         $('#password').focus();
-
-        function load_table() {
-            $.ajax({
-                url: 'logs',
-                type: 'GET',
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                },
-                success: onSuccess
-            })
-        }
-
-        function onSuccess(data) {
-            var obj = data;
-            var tableContent = '';
-            // console.log("The Logged Data :  ", obj);
-            for (var i = 0; i < obj.length; i++) {
-                tableContent += '<tr>';
-                tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].fname + '</td>';
-                tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].lname + '</td>';
-                tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].created_at + '</td>';
-                tableContent += '<td class="border border-gray-300 p-4 m-4">' + '<img src="storage/' + obj[i].photo +
-                    '" width="50" height="70">' + '</td>';
-                tableContent += '</tr>';
-            }
-            $('#all_logs').append(tableContent);
-        }
-        function load_table_error() {
-            $.ajax({
-                url: 'logs_error',
-                type: 'GET',
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                },
-                success: onSuccess_error
-            })
-        }
-
-        function onSuccess_error(data_error) {
-            var obj_error = data_error;
-            var tableContent1 = '';
-            // console.log("The Logged Data In Error:  ", obj_error);
-            for (var i = 0; i < obj_error.length; i++) {
-                tableContent1 += '<tr>';
-                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].card_number + '</td>';
-                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].is_inserted + '</td>';
-                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].created_at + '</td>';
-                tableContent1 += '</tr>';
-            }
-            $('#error_logs').append(tableContent1);
-        }
-        $(document).ready(function() {
-            load_table();
-            load_table_error();
-        })
     </script>
     <footer
         class="text-3xl text-white text-center
