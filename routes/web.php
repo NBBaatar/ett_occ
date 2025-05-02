@@ -13,3 +13,4 @@ Route::get('/indexed', function () {
 });
 Route::post('search', [IndexController::class, 'search']);
 Route::get('logs', [IndexController::class, 'logs']);
+Route::get('logs_error', [IndexController::class, 'logs_error']);

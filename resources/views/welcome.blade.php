@@ -96,7 +96,7 @@
                     <tr>
                         <th class="border border-gray-300 p-4 m-4 text-blue-950">Овог</th>
                         <th class="border border-gray-300 p-4 m-4 text-blue-950">Нэр</th>
-                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Ажилд орсон огноо</th>
+                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Карт уншигдсан</th>
                         <th class="border border-gray-300 p-4 m-4 text-blue-950">Ажилтын зураг</th>
                     </tr>
                 </thead>
@@ -105,7 +105,7 @@
             </table>
       </div>
       <div class="justify-center flex items-center  p-2 py-12 col-span-2">
-        <table id="all_logs" class="shadow-lg w-full border-collapse border border-gray-300">
+        <table id="error_logs" class="shadow-lg w-full border-collapse border border-gray-300">
                 <thead>
                     <tr>
                         <th class="border border-gray-300 p-4 m-4 text-blue-950">Картын дугаар</th>
@@ -115,10 +115,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <td class="border border-gray-300 p-4 m-4">010101111</td>
-                  <td class="border border-gray-300 p-4 m-4">уншигдаагүй</td>
-                  <td class="border border-gray-300 p-4 m-4">2025.05.02</td>
-                     
                 </tbody>
             </table>
       </div>
@@ -178,20 +174,45 @@
         function onSuccess(data) {
             var obj = data;
             var tableContent = '';
-            console.log("The Logged Data :  ", obj);
+            // console.log("The Logged Data :  ", obj);
             for (var i = 0; i < obj.length; i++) {
                 tableContent += '<tr>';
                 tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].fname + '</td>';
                 tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].lname + '</td>';
-                tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].date_of_employement + '</td>';
+                tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].created_at + '</td>';
                 tableContent += '<td class="border border-gray-300 p-4 m-4">' + '<img src="storage/' + obj[i].photo +
                     '" width="50" height="70">' + '</td>';
                 tableContent += '</tr>';
             }
             $('#all_logs').append(tableContent);
         }
+        function load_table_error() {
+            $.ajax({
+                url: 'logs_error',
+                type: 'GET',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                },
+                success: onSuccess_error
+            })
+        }
+
+        function onSuccess_error(data_error) {
+            var obj_error = data_error;
+            var tableContent1 = '';
+            // console.log("The Logged Data In Error:  ", obj_error);
+            for (var i = 0; i < obj_error.length; i++) {
+                tableContent1 += '<tr>';
+                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].card_number + '</td>';
+                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].is_inserted + '</td>';
+                tableContent1 += '<td class="border border-gray-300 p-4 m-4">' + obj_error[i].created_at + '</td>';
+                tableContent1 += '</tr>';
+            }
+            $('#error_logs').append(tableContent1);
+        }
         $(document).ready(function() {
             load_table();
+            load_table_error();
         })
     </script>
     <footer

@@ -88,9 +88,18 @@ class IndexController extends Controller
     public function logs(Request $request)
     {
         if ($request->ajax()) {
-            $data = Log::orderBy('id', 'DESC')->take(3)->get();
+            $data = Log::where('is_inserted', 1)->orderBy('id', 'DESC')->take(4)->get();
+            // $data = Log::orderBy('id', 'DESC')->take(3)->get();
             return $data;
         }
+    }
+    public function logs_error(Request $request)
+    {
+        // if ($request->ajax()) {
+        $data_error = Log::where('is_inserted', 0)->orderBy('id', 'DESC')->take(4)->get();
+        // $data = Log::orderBy('id', 'DESC')->take(3)->get();
+        return $data_error;
+        // }
     }
 
 }
