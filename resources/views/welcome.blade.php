@@ -66,18 +66,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class='drop-shadow-lg font-mono text-center'>
-        <h1 class='text-indigo-900 font-sans font-bold text-4xl p-4 m-4'>"Эрдэнэс Тавантолгой" ХК</h1>
-    </div> --}}
-    {{-- <div class= "justify-center flex items-center  sm:items-center sm:pt-0">
-        <div class="p-8 flex justify-content-center items-center full-width" style="height: 50%">
-            <iframe class="border border-sky-500 rounded shadow-lg" title="Post20250405" width="800" height="300"
-                src="https://app.powerbi.com/view?r=eyJrIjoiOWU0ODhjNjgtZjk0ZS00NTdjLTgwNDctY2NmMmE2OGJlMWI1IiwidCI6IjFiYTNkMjY4LTg0MzYtNGExNS05NjI5LTZhNDM4ZjQ5NWYwNSIsImMiOjEwfQ%3D%3D"
-                frameborder="0" allowFullScreen="true"></iframe>
-        </div>
-    </div> --}}
     <div class="justify-center flex items-center  p-2  sm:items-center sm:pt-0">
-        {{-- <form class=" px-8 pt-6 pb-8 mb-4"> --}}
         <div class="mb-1 p-2">
             <label
                 class="focus-within:ring-2 focus-within:ring-blue-500 justify-center block text-gray-700 text-lg font-bold mb-4"
@@ -88,19 +77,21 @@
                 class="focus:border-blue-400 shadow appearance-none border border-sky-500 rounded w-full py-4 px-12 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password" type="password" placeholder="" maxlength="10">
         </div>
-        {{-- </form> --}}
     </div>
     <div id='search_list' class="justify-center flex items-center  p-4  sm:items-center sm:pt-0"></div>
-    <div class="mb-1 p-1 justify-center flex items-center sm:items-center sm:pt-0">
+    <div>
+      {{-- <div class="mb-1 p-1 justify-center flex items-center sm:items-center sm:pt-0">
         <label
             class="focus-within:ring-2 focus-within:ring-blue-500 justify-center block text-gray-700 text-lg font-bold mb-4"
             for="password">
             Сүүлд уншигдсан байдал
         </label>
+    </div> --}}
+    <div id='log_list' class="grid grid-flow-col grid-rows-3 gap-4 justify-center flex items-center  p-2 ">
     </div>
-    <div id='log_list' class="justify-center flex items-center  p-2 ">
-        <div class="justify-center flex items-center  p-2">
-            <table id="all_logs" class="shadow-lg w-full border-collapse border border-gray-300">
+    <div class="flex items-stretch justify-center items-center  p-2  sm:items-center sm:pt-0 grid grid-cols-4 gap-4">
+      <div class="justify-center flex items-center  p-2 py-4 col-span-2">
+          <table id="all_logs" class="shadow-lg w-full border-collapse border border-gray-300">
                 <thead>
                     <tr>
                         <th class="border border-gray-300 p-4 m-4 text-blue-950">Овог</th>
@@ -112,7 +103,25 @@
                 <tbody>
                 </tbody>
             </table>
-        </div>
+      </div>
+      <div class="justify-center flex items-center  p-2 py-12 col-span-2">
+        <table id="all_logs" class="shadow-lg w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Картын дугаар</th>
+                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Төлөв</th>
+                        <th class="border border-gray-300 p-4 m-4 text-blue-950">Уншигдсан огноо</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                  <td class="border border-gray-300 p-4 m-4">010101111</td>
+                  <td class="border border-gray-300 p-4 m-4">уншигдаагүй</td>
+                  <td class="border border-gray-300 p-4 m-4">2025.05.02</td>
+                     
+                </tbody>
+            </table>
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
@@ -141,7 +150,8 @@
                             type: 'POST',
                             data: {
                                 '_token': '{{ csrf_token() }}',
-                                'search': query
+                                'search': query,
+                  
                             },
                             success: function(data) {
                                 // $('#all_list').html(data);
@@ -149,7 +159,6 @@
 
                             }
                         })
-
                 }
             });
         });
@@ -169,14 +178,14 @@
         function onSuccess(data) {
             var obj = data;
             var tableContent = '';
-            console.log(obj);
+            console.log("The Logged Data :  ", obj);
             for (var i = 0; i < obj.length; i++) {
                 tableContent += '<tr>';
                 tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].fname + '</td>';
                 tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].lname + '</td>';
                 tableContent += '<td class="border border-gray-300 p-4 m-4">' + obj[i].date_of_employement + '</td>';
                 tableContent += '<td class="border border-gray-300 p-4 m-4">' + '<img src="storage/' + obj[i].photo +
-                    '" width="90" height="110">' + '</td>';
+                    '" width="50" height="70">' + '</td>';
                 tableContent += '</tr>';
             }
             $('#all_logs').append(tableContent);

@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Log extends Model
 {
-   protected $fillable = [
+    protected $fillable = [
         'fname',
         'lname',
         'register',
@@ -25,5 +24,6 @@ class Log extends Model
         'card_number',
         'employee_uid',
         'is_active',
+        'is_inserted',
     ];
 }
