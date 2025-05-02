@@ -42,6 +42,7 @@ class IndexController extends Controller
                     // dump($request->search);
                     Log::create([
                         'card_number' => $request->search,
+                        'is_active'   => false,
                         'is_inserted' => false,
                     ]);
                 }
