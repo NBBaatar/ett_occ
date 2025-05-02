@@ -11,7 +11,6 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Эрдэнэс Тавантолгой ХК</title>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link rel="icon" href="{{ asset('images/favicon.ico') }}">
@@ -22,17 +21,17 @@
 {{-- <body class="font-sans antialiased dark:bg-black dark:text-white/50"> --}}
 
 <body class="font-sans bg-gradient-to-l from-grey-100 to-amber-100 ">
-    <div class="px-3 mb-2  mx-auto w-11/12 ">
-        <div class="sm:flex items-stretch justify-between grow lg:mb-0  py-2 px-2">
-            <div class="flex flex-col flex-wrap justify-center mb-5 mr-3 lg:mb-0">
+    <div class="px-2 mb-1  mx-auto w-11/12 ">
+        <div class="sm:flex items-stretch justify-between grow lg:mb-0  py-1 px-1">
+            <div class="flex flex-col flex-wrap justify-center mb-1 mr-3 lg:mb-0">
                 <div class='drop-shadow-lg font-mono text-center'>
-                    <h1 class='text-indigo-900 font-sans font-bold text-4xl p-4 m-4'>"Эрдэнэс Тавантолгой" ХК</h1>
+                    <h1 class='text-indigo-900 font-sans font-bold text-4xl p-2 m-2'>"Эрдэнэс Тавантолгой" ХК</h1>
                 </div>
             </div>
             <div class="flex items-center lg:shrink-0 lg:flex-nowrap">
                 <div class="relative flex items-center lg:ml-4 sm:mr-0 mr-2">
                 </div>
-                <div class="relative lg:hidden flex items-center sm:ml-2 ml-auto">
+                <div class="relative lg:hidden flex items-center sm:ml-1 ml-auto">
                     <a href="javascript:void(0)"
                         class="flex items-center justify-center w-12 h-12 text-base font-medium leading-normal text-center align-middle transition-colors duration-150 ease-in-out bg-transparent border border-solid shadow-none cursor-pointer rounded-2xl text-stone-500 border-stone-200 hover:text-primary active:text-primary focus:text-primary"
                         onclick="(function(){document.querySelector('.group\\/sidebar').classList.toggle('-translate-x-full');})();">
@@ -43,7 +42,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="relative flex items-center ml-2 lg:ml-4">
+                <div class="relative flex items-center ml-1 lg:ml-2">
                     <a href="/dashboard"
                         class="flex items-center justify-center w-12 h-12 text-base font-medium leading-normal text-center align-middle transition-colors duration-150 ease-in-out bg-transparent border border-solid shadow-none cursor-pointer rounded-2xl text-stone-500 border-stone-200 hover:text-primary active:text-primary focus:text-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -56,11 +55,26 @@
                         </svg>
                     </a>
                 </div>
+                <div class="relative flex item-center ml-1 lg:ml-2">
+                    <a href="/indexed"
+                        class="flex items-center justify-center w-12 h-12 text-base font-medium leading-normal text-center align-middle transition-colors duration-150 ease-in-out bg-transparent border border-solid shadow-none cursor-pointer rounded-2xl text-stone-500 border-stone-200 hover:text-primary active:text-primary focus:text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.242 5.992h12m-12 6.003H20.24m-12 5.999h12M4.117 7.495v-3.75H2.99m1.125 3.75H2.99m1.125 0H5.24m-1.92 2.577a1.125 1.125 0 1 1 1.591 1.59l-1.83 1.83h2.16M2.99 15.745h1.125a1.125 1.125 0 0 1 0 2.25H3.74m0-.002h.375a1.125 1.125 0 0 1 0 2.25H2.99" /></svg>
+                    </a>
+                    </div>
+            </div>
             </div>
         </div>
     </div>
     {{-- <div class='drop-shadow-lg font-mono text-center'>
         <h1 class='text-indigo-900 font-sans font-bold text-4xl p-4 m-4'>"Эрдэнэс Тавантолгой" ХК</h1>
+    </div> --}}
+    {{-- <div class= "justify-center flex items-center  sm:items-center sm:pt-0">
+        <div class="p-8 flex justify-content-center items-center full-width" style="height: 50%">
+            <iframe class="border border-sky-500 rounded shadow-lg" title="Post20250405" width="800" height="300"
+                src="https://app.powerbi.com/view?r=eyJrIjoiOWU0ODhjNjgtZjk0ZS00NTdjLTgwNDctY2NmMmE2OGJlMWI1IiwidCI6IjFiYTNkMjY4LTg0MzYtNGExNS05NjI5LTZhNDM4ZjQ5NWYwNSIsImMiOjEwfQ%3D%3D"
+                frameborder="0" allowFullScreen="true"></iframe>
+        </div>
     </div> --}}
     <div class="justify-center flex items-center  p-2  sm:items-center sm:pt-0">
         {{-- <form class=" px-8 pt-6 pb-8 mb-4"> --}}

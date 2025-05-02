@@ -11,14 +11,12 @@ class EditTeamProfile extends EditTenantProfile
     {
         return 'Ажиллах орчин нэр засварлах';
     }
-
     public function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
                     ->label('Ажиллах орчин нэр засварлах')
-
             ]);
     }
 }

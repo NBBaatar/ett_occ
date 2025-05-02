@@ -8,5 +8,8 @@ Route::get('/', function () {
 });
 
 Route::get('search', [IndexController::class, 'search']);
+Route::get('/indexed', function () {
+    return view('indexed');
+});
 Route::post('search', [IndexController::class, 'search']);
 Route::get('logs', [IndexController::class, 'logs']);
