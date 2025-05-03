@@ -41,12 +41,27 @@ class IndexController extends Controller
                 } else {
                     // dump($request->search);
                     Log::create([
-                        'card_number' => $request->search,
-                        'is_active'   => false,
-                        'is_inserted' => false,
+                        'fname'               => $request->fname,
+                        'lname'               => $request->lname,
+                        'register'            => $request->register,
+                        'phone'               => $request->phone,
+                        'date_of_employement' => $request->date_of_employement,
+                        'date_of_expiration'  => $request->date_of_expiration,
+                        'photo'               => $request->photo,
+                        'company_id'          => $request->company_id,
+                        'co_operation_id'     => $request->co_operation_id,
+                        'appointment_id'      => $request->appointment_id,
+                        'mining_site_id'      => $request->mining_site_id,
+                        'sub_company_id'      => $request->sub_company_id,
+                        'shift_id'            => $request->shift_id,
+                        'region_id'           => $request->region_id,
+                        'point_id'            => $request->point_id,
+                        'employee_uid'        => $request->employee_uid,
+                        'card_number'         => $request->search,
+                        'is_active'           => false,
+                        'is_inserted'         => false,
                     ]);
                 }
-
             }
 
             if ($data->count() > 0) {
