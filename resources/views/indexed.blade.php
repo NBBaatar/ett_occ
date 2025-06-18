@@ -54,7 +54,7 @@
 
                     </a>
                 </div>
-                
+
         </div>
     </div>
     {{-- <div class='drop-shadow-lg font-mono text-center'>
@@ -62,7 +62,8 @@
     </div> --}}
     <div class= "justify-center flex items-center  sm:items-center sm:pt-0">
         <div class="p-1 flex justify-content-center items-center full-width" style="height: 50%">
-        <iframe title="Haruuliin_Post_20250501" width="1000" height="673.5" src="https://app.powerbi.com/view?r=eyJrIjoiMTIzNjhhMjEtZDI3Yi00NDU4LThlOGMtMWIxZDJmYWVlZjgzIiwidCI6IjFiYTNkMjY4LTg0MzYtNGExNS05NjI5LTZhNDM4ZjQ5NWYwNSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+{{--        <iframe title="Haruuliin_Post_20250501" width="1000" height="673.5" src="https://app.powerbi.com/view?r=eyJrIjoiMTIzNjhhMjEtZDI3Yi00NDU4LThlOGMtMWIxZDJmYWVlZjgzIiwidCI6IjFiYTNkMjY4LTg0MzYtNGExNS05NjI5LTZhNDM4ZjQ5NWYwNSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>--}}
+            <iframe title="Haruuliin_Post_20250501" width="1000" height="673.5" src="https://app.powerbi.com/view?r=eyJrIjoiYWM0NTI4MmItYmZlMy00OTY4LThkM2MtMTZmYjcyOGZhODlkIiwidCI6IjFiYTNkMjY4LTg0MzYtNGExNS05NjI5LTZhNDM4ZjQ5NWYwNSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
         </div>
     </div>
     <footer

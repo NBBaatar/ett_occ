@@ -30,6 +30,7 @@ return new class extends Migration
             $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete()->nullable();
             $table->string('card_number')->unique()->nullable(false);
             $table->string('employee_uid')->unique()->nullable(false);
+            $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

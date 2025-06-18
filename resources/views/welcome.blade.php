@@ -43,7 +43,7 @@
                     </a>
                 </div>
                 <div class="relative flex items-center ml-1 lg:ml-2">
-                    <a href="/dashboard"
+                    <a href="/app"
                         class="flex items-center justify-center w-12 h-12 text-base font-medium leading-normal text-center align-middle transition-colors duration-150 ease-in-out bg-transparent border border-solid shadow-none cursor-pointer rounded-2xl text-stone-500 border-stone-200 hover:text-primary active:text-primary focus:text-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -65,7 +65,7 @@
             </div>
             </div>
         </div>
-    </div>
+
     <div class="justify-center flex items-center  p-2  sm:items-center sm:pt-0">
         <div class="mb-1 p-2">
             <label
@@ -79,19 +79,20 @@
         </div>
     </div>
     <div id='search_list' class="justify-center flex items-center  p-4  sm:items-center sm:pt-0"></div>
-   <div class="grid grid-cols-2 gap-4 p-4 overflow-y-scroll max-h-[300px] border-collapse border border-gray-300 order-last">
-      <label class="flex justify-center text-lg font-bold ">Сүүлд уншигдсан карт:</label>
-      <table id="all_logs" class="overflow-y-scroll shadow-lg w-full border-collapse border border-gray-300 table-auto table-auto overflow-scroll w-full p-4 gap-2">
-      <label class="flex justify-center text-lg font-bold">Сүүлд уншигдаагүй картын мэдээлэл:</label>
-      <table id="error_logs" class="overflow-y-scroll shadow-lg w-full border-collapse border border-gray-300 table-auto table-auto overflow-scroll w-full p-4 gap-2">
-   </div>  
+{{--    Сүүлд уншигдсан байддал болон уншигдаагүй хэсгийн код--}}
+{{--   <div class="grid grid-cols-2 gap-4 p-4 overflow-y-scroll max-h-[300px] border-collapse border border-gray-300 order-last">--}}
+{{--      <label class="flex justify-center text-lg font-bold ">Сүүлд уншигдсан карт:</label>--}}
+{{--      <table id="all_logs" class="overflow-y-scroll shadow-lg w-full border-collapse border border-gray-300 table-auto table-auto overflow-scroll w-full p-4 gap-2">--}}
+{{--      <label class="flex justify-center text-lg font-bold">Сүүлд уншигдаагүй картын мэдээлэл:</label>--}}
+{{--      <table id="error_logs" class="overflow-y-scroll shadow-lg w-full border-collapse border border-gray-300 table-auto table-auto overflow-scroll w-full p-4 gap-2">--}}
+{{--   </div>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
     </script>
     <script>
         $(document).ready(function() {
-            
+
             $('#password').on("keydown", function(event) {
                 if (event.keyCode == 13) {
                     event.preventDefault();
@@ -119,7 +120,7 @@
                                 // $('#all_list').html(data);
                                 document.getElementById("password").value = '';
                             }
-                        }), 
+                        }),
                         $.ajax({
                             url: 'logs',
                             type: 'GET',
@@ -141,7 +142,7 @@
                                     }
                                     $('#all_logs').append(tableContent);
                               }
-                        }), 
+                        }),
                          $.ajax({
                           url: 'logs_error',
                           type: 'GET',

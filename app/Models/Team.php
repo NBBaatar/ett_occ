@@ -11,7 +11,7 @@ class Team extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'slug'];
-    public function empoloyees(): HasMany
+    public function employees(): HasMany
     {
         return $this->hasMany(Employee::class);
     }

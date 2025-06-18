@@ -2,14 +2,12 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\App\Pages\Tenancy\RegisterTeam;
-use App\Filament\Pages\Tenancy\EditTeamProfile;
 
 use App\Filament\Widgets\CompanyStatic;
 use App\Filament\Widgets\Employee;
 use App\Filament\Widgets\EmployeeStatic;
 use App\Filament\Widgets\IframeWidget;
-use App\Models\Team;
+
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -31,13 +29,10 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->id('dashboard')
-            ->tenant(Team::class, ownershipRelationship: 'team')
-            ->tenantRegistration(RegisterTeam::class)
-            ->tenantProfile(EditTeamProfile::class)
-            ->path('dashboard')
-            ->login()
+
+            ->id('admin')
+            ->path('admin')
+
              ->colors([
                 'danger' => Color::Rose,
                 'gray' => Color::Gray,
