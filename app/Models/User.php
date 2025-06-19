@@ -28,6 +28,9 @@ class User extends Authenticatable implements  HasTenants, FilamentUser
         'name',
         'email',
         'password',
+        'is_admin',
+        'is_card',
+        'is_tech',
     ];
 
     /**
@@ -38,6 +41,7 @@ class User extends Authenticatable implements  HasTenants, FilamentUser
     protected $hidden = [
         'password',
         'remember_token',
+
     ];
 
     /**
@@ -50,6 +54,9 @@ class User extends Authenticatable implements  HasTenants, FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
+            'is_card' => 'boolean',
+            'is_tech' => 'boolean',
         ];
     }
     public function teams(): BelongsToMany
@@ -67,8 +74,28 @@ class User extends Authenticatable implements  HasTenants, FilamentUser
     }
     public function canAccessPanel(Panel $panel): bool
     {
-        return  true;
+        if($panel->getId() === 'admin'){
+            return str_ends_with($this->is_admin, '1' );
+        }
+        if($panel->getId() === 'app'){
+            return str_ends_with($this->is_card, '1' );
+        }
+        if($panel->getId() === 'tech'){
+            return str_ends_with($this->is_tech, '1' );
+        }
+        return false;
     }
-
+    public function isAdmin (): bool
+    {
+        return $this->is_admin === true;
+    }
+    public function isCard (): bool
+    {
+        return $this->is_card === true;
+    }
+    public function isTech (): bool
+    {
+        return $this->is_tech === true;
+    }
 
 }

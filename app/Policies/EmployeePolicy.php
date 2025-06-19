@@ -48,7 +48,7 @@ class EmployeePolicy
         if(Filament::getCurrentPanel()->getId() === 'app'){
             return $user->id == 1 || $user->id == 2;
         }
-        return false;
+        return $user;
     }
 
     /**
@@ -57,12 +57,12 @@ class EmployeePolicy
     public function update(User $user, Employee $employee): bool
     {
         if(Filament::getCurrentPanel()->getId() === 'admin'){
-            return $user->id == 1;
+            return $user->id === 1;
         }
         if(Filament::getCurrentPanel()->getId() === 'app'){
             return $user->id == 1 || $user->id == 2;
         }
-        return false;
+		    return $user;
     }
 
     /**
@@ -74,7 +74,7 @@ class EmployeePolicy
             return $user->id == 1;
         }
 
-        return false;
+		    return $user;
     }
 
     /**
@@ -86,7 +86,7 @@ class EmployeePolicy
             return $user->id == 1;
         }
 
-        return false;
+		    return $user;
     }
 
     /**
@@ -97,6 +97,6 @@ class EmployeePolicy
         if(Filament::getCurrentPanel()->getId() === 'admin'){
             return $user->id == 1;
         }
-        return false;
+		    return $user;
     }
 }

@@ -8,10 +8,12 @@ use App\Filament\Widgets\Employee;
 use App\Filament\Widgets\EmployeeStatic;
 use App\Filament\Widgets\IframeWidget;
 
+use App\Http\Middleware\VerifyIsAdmin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -32,6 +34,18 @@ class AdminPanelProvider extends PanelProvider
 
             ->id('admin')
             ->path('admin')
+            ->userMenuItems([
+                MenuItem::make()
+                ->label('Цахим үнэмлэх')
+                ->icon('heroicon-o-cog-6-tooth')
+                ->url('/app')
+            ])
+            ->userMenuItems([
+                MenuItem::make()
+                    ->label('Техник бүртгэл')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->url('/tech')
+            ])
              ->colors([
                 'danger' => Color::Rose,
                 'gray' => Color::Gray,
@@ -65,10 +79,11 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-            ])
-            ->authMiddleware([
-                Authenticate::class,
+                VerifyIsAdmin::class,
             ]);
+//            ->authMiddleware([
+//                Authenticate::class,
+//            ]);
 
 
     }
