@@ -27,11 +27,12 @@ return new class extends Migration
             $table->foreignId('shift_id')->constrained('shifts')->cascadeOnDelete()->nullable();
             $table->foreignId('region_id')->constrained('regions')->cascadeOnDelete()->nullable();
             $table->foreignId('point_id')->constrained('points')->cascadeOnDelete()->nullable();
-            $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete()->nullable();
+//            $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete()->nullable();
             $table->string('card_number')->unique()->nullable(false);
             $table->string('employee_uid')->unique()->nullable(false);
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->boolean('is_trained')->default(true);
             $table->timestamps();
         });
     }

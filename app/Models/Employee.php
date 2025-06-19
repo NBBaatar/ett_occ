@@ -31,6 +31,7 @@ protected $fillable = [
         'employee_uid',
         'is_active',
         'description',
+        'is_trained',
     ];
     public function company() : BelongsTo
     {
@@ -64,9 +65,9 @@ protected $fillable = [
     {
         return $this->belongsTo(Point::class);
     }
-    public function team() : BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
+//    public function team() : BelongsTo
+//    {
+//        return $this->belongsTo(Team::class);
+//    }
 
 }

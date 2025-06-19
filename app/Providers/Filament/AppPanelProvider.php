@@ -21,7 +21,6 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-
 class AppPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -29,7 +28,7 @@ class AppPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('app')
-            ->tenant(Team::class, ownershipRelationship: 'team')
+//            ->tenant(Team::class, ownershipRelationship: 'team')
 //            ->tenantRegistration(RegisterTeam::class)
             ->tenantProfile(EditTeamProfile::class)
             ->path('app')

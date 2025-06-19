@@ -11,10 +11,10 @@ class Team extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'slug'];
-    public function employees(): HasMany
-    {
-        return $this->hasMany(Employee::class);
-    }
+//    public function employees(): HasMany
+//    {
+//        return $this->hasMany(Employee::class);
+//    }
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(User::class);

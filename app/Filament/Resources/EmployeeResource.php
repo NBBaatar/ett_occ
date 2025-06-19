@@ -166,6 +166,10 @@ class EmployeeResource extends Resource
                     ->placeholder('Тайлбар оруулах')
                     ->autosize()
                     ->columnSpan('full'),
+                Forms\Components\Toggle::make('is_trained')
+                        ->required()
+                        ->default(true)
+                        ->label('ХАБ-н сургалтад хамрагдсан эсэх'),
                 Forms\Components\TextInput::make('employee_uid')
                     ->required()
                     ->label('Ажилтны үнэмлэх')

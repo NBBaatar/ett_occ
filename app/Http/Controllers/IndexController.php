@@ -13,55 +13,39 @@ class IndexController extends Controller
             $data = Employee::where('card_number', $request->search)
                 ->where('is_active', 1)->get();
             $output = '';
-            //  if(Carbon::now()->diffInMinutes($data->created_at) > 2){
+            //  if(Carbon::now()->diffInMinutes($data->created_at) > 2)
             // ene heseg deer log deer data baigaa esehiig employee idgaar shalgaad bwal algasana, hgui bol create hiine.
-            if ($request->isMethod('POST')) {
-                if ($data->isNotEmpty()) {
-                    Log::Create([
-                        'fname'               => $data[0]->fname,
-                        'lname'               => $data[0]->lname,
-                        'register'            => $data[0]->register,
-                        'phone'               => $data[0]->phone,
-                        'date_of_employement' => $data[0]->date_of_employement,
-                        'date_of_expiration'  => $data[0]->date_of_expiration,
-                        'photo'               => $data[0]->photo,
-                        'company_id'          => $data[0]->company_id,
-                        'co_operation_id'     => $data[0]->co_operation_id,
-                        'appointment_id'      => $data[0]->appointment_id,
-                        'mining_site_id'      => $data[0]->mining_site_id,
-                        'sub_company_id'      => $data[0]->sub_company_id,
-                        'shift_id'            => $data[0]->shift_id,
-                        'region_id'           => $data[0]->region_id,
-                        'point_id'            => $data[0]->point_id,
-                        'card_number'         => $data[0]->card_number,
-                        'employee_uid'        => $data[0]->employee_uid,
-                        'is_active'           => $data[0]->is_active,
-                        'is_inserted'         => true,
-                    ]);
-                } else {
-                    // dump($request->search);
-                    Log::create([
-                        'fname'               => $request->fname,
-                        'lname'               => $request->lname,
-                        'register'            => $request->register,
-                        'phone'               => $request->phone,
-                        'date_of_employement' => $request->date_of_employement,
-                        'date_of_expiration'  => $request->date_of_expiration,
-                        'photo'               => $request->photo,
-                        'company_id'          => $request->company_id,
-                        'co_operation_id'     => $request->co_operation_id,
-                        'appointment_id'      => $request->appointment_id,
-                        'mining_site_id'      => $request->mining_site_id,
-                        'sub_company_id'      => $request->sub_company_id,
-                        'shift_id'            => $request->shift_id,
-                        'region_id'           => $request->region_id,
-                        'point_id'            => $request->point_id,
-                        'employee_uid'        => $request->employee_uid,
-                        'card_number'         => $request->search,
-                        'is_active'           => false,
-                        'is_inserted'         => false,
-                    ]);
-                }
+//            if ($request->isMethod('POST')) {
+//
+//            }
+            if ($data->isNotEmpty()) {
+                Log::Create([
+                    'fname'               => $data[0]->fname,
+                    'lname'               => $data[0]->lname,
+                    'register'            => $data[0]->register,
+                    'phone'               => $data[0]->phone,
+                    'date_of_employement' => $data[0]->date_of_employement,
+                    'date_of_expiration'  => $data[0]->date_of_expiration,
+                    'photo'               => $data[0]->photo,
+                    'company_id'          => $data[0]->company_id,
+                    'co_operation_id'     => $data[0]->co_operation_id,
+                    'appointment_id'      => $data[0]->appointment_id,
+                    'mining_site_id'      => $data[0]->mining_site_id,
+                    'sub_company_id'      => $data[0]->sub_company_id,
+                    'shift_id'            => $data[0]->shift_id,
+                    'region_id'           => $data[0]->region_id,
+                    'point_id'            => $data[0]->point_id,
+                    'card_number'         => $data[0]->card_number,
+                    'employee_uid'        => $data[0]->employee_uid,
+                    'is_active'           => $data[0]->is_active,
+                    'is_inserted'         => true,
+                ]);
+            } else {
+                Log::create([
+                    'card_number'         => $request->search,
+                    'is_active'           => false,
+                    'is_inserted'         => false,
+                ]);
             }
 
             if ($data->count() > 0) {
@@ -104,7 +88,7 @@ class IndexController extends Controller
     public function logs(Request $request)
     {
         if ($request->ajax()) {
-            $data = Log::where('is_inserted', 1)->orderBy('id', 'DESC')->take(1)->latest()->get();
+            $data = Log::where('is_inserted', 1)->orderBy('id', 'DESC')->take(4)->latest()->get();
             // $data = Log::orderBy('id', 'DESC')->take(3)->get();
             return $data;
         }
@@ -112,7 +96,7 @@ class IndexController extends Controller
     public function logs_error(Request $request)
     {
         if ($request->ajax()) {
-            $data_error = Log::where('is_inserted', 0)->orderBy('id', 'DESC')->take(1)->latest()->get();
+            $data_error = Log::where('is_inserted', 0)->orderBy('id', 'DESC')->take(4)->latest()->get();
             // $data = Log::orderBy('id', 'DESC')->take(3)->get();
             return $data_error;
         }

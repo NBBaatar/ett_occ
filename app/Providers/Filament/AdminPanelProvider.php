@@ -32,7 +32,6 @@ class AdminPanelProvider extends PanelProvider
 
             ->id('admin')
             ->path('admin')
-
              ->colors([
                 'danger' => Color::Rose,
                 'gray' => Color::Gray,
