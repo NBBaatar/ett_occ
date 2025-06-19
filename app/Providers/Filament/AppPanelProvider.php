@@ -41,7 +41,7 @@ class AppPanelProvider extends PanelProvider
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
             ])
-            ->brandName('Эрдэнэс Тавантолгой ХК')
+            ->brandName('Эрдэнэс Тавантолгой ХК - Цахим бүртгэл')
             ->brandLogo(asset('images/logo.png'))
             ->favicon(asset('images/favicon.ico'))
             ->font('Poppins')
