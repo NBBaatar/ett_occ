@@ -17,17 +17,22 @@ class TechCategoryResource extends Resource
 {
     protected static ?string $model = TechCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
 
+    protected static ?string $pluralLabel = 'Техникийн ангилал';
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->placeholder('Техник ангиллын нэр')
+                    ->label('Ангиллын нэр'),
                 Forms\Components\Toggle::make('status')
-                    ->required(),
+                    ->default(true)
+                    ->required()
+                    ->label('Техник ангилал статус'),
             ]);
     }
 

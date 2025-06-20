@@ -10,6 +10,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateAppointment extends CreateRecord
 {
     protected static string $resource = AppointmentResource::class;
+    protected static ?string $title = 'Албан тушаал үүсгэх';
      protected function getCreateFormAction(): \Filament\Actions\Action
     {
         return parent::getCreateFormAction()

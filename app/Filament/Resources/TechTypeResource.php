@@ -17,20 +17,30 @@ class TechTypeResource extends Resource
 {
     protected static ?string $model = TechType::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
 
+    protected static ?string $pluralLabel = 'Техникийн төрөл';
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
+                    ->maxLength(255)
+                    ->placeholder('Техник төрлийн нэр')
+                    ->label('Төрлийн нэр'),
+
                 Forms\Components\Select::make('tech_category_id')
+                    ->placeholder(' Сонгох')
+                    ->label('Төхникийн ангилал')
+                    ->searchable()
                     ->relationship('techCategory', 'name')
+                    ->preload()
                     ->required(),
+                Forms\Components\Toggle::make('status')
+                    ->default(true)
+                    ->required()
+                    ->label('Статус'),
             ]);
     }
 

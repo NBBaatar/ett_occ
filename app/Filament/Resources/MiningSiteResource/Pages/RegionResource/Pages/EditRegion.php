@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditRegion extends EditRecord
 {
     protected static string $resource = RegionResource::class;
+    protected static ?string $title = 'Харьяаллын мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
     {

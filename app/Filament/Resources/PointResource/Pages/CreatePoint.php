@@ -10,6 +10,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePoint extends CreateRecord
 {
     protected static string $resource = PointResource::class;
+    protected static ?string $title = 'Шалган нэвтрүүлэх цэг үүсгэх';
     protected function getCreateFormAction(): \Filament\Actions\Action
     {
         return parent::getCreateFormAction()

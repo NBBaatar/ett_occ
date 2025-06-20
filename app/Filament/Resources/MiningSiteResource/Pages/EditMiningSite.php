@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditMiningSite extends EditRecord
 {
     protected static string $resource = MiningSiteResource::class;
+    protected static ?string $title = 'Төслийн талбайн мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
     {

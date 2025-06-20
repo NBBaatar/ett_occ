@@ -10,6 +10,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateShift extends CreateRecord
 {
     protected static string $resource = ShiftResource::class;
+    protected static ?string $title = 'Ээлж үүсгэх';
     protected function getCreateFormAction(): \Filament\Actions\Action
     {
         return parent::getCreateFormAction()

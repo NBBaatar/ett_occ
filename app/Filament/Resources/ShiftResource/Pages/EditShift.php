@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditShift extends EditRecord
 {
     protected static string $resource = ShiftResource::class;
+    protected static ?string $title = 'Ээлжийн мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
     {

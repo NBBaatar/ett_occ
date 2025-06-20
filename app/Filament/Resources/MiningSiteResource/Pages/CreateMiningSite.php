@@ -10,6 +10,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateMiningSite extends CreateRecord
 {
     protected static string $resource = MiningSiteResource::class;
+    protected static ?string $title = 'Төслийн талбай үүсгэх';
      protected function getCreateFormAction(): \Filament\Actions\Action
     {
         return parent::getCreateFormAction()

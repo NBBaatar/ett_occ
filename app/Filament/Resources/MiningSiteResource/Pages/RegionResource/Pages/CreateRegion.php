@@ -10,6 +10,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateRegion extends CreateRecord
 {
     protected static string $resource = RegionResource::class;
+    protected static ?string $title = 'Харьяалал үүсгэх';
      protected function getCreateFormAction(): \Filament\Actions\Action
     {
         return parent::getCreateFormAction()

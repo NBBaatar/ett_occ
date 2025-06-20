@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditTechType extends EditRecord
 {
     protected static string $resource = TechTypeResource::class;
+    protected static ?string $title = 'Техник төрлийн мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
     {

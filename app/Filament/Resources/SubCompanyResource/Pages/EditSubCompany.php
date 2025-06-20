@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditSubCompany extends EditRecord
 {
     protected static string $resource = SubCompanyResource::class;
+    protected static ?string $title = 'Туслан гүйцэтгэгч компанийн мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
     {

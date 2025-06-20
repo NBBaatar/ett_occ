@@ -10,6 +10,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateCoOperation extends CreateRecord
 {
     protected static string $resource = CoOperationResource::class;
+    protected static ?string $title = 'Түншлэл үүсгэх';
      protected function getCreateFormAction(): \Filament\Actions\Action
     {
         return parent::getCreateFormAction()

@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditAppointment extends EditRecord
 {
     protected static string $resource = AppointmentResource::class;
+    protected static ?string $title = 'Албан тушаал мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
     {

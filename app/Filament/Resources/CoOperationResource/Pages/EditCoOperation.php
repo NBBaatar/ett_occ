@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditCoOperation extends EditRecord
 {
     protected static string $resource = CoOperationResource::class;
+    protected static ?string $title = 'Түншлэлийн мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
     {

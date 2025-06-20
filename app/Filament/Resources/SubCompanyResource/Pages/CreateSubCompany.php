@@ -10,6 +10,7 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSubCompany extends CreateRecord
 {
     protected static string $resource = SubCompanyResource::class;
+    protected static ?string $title = 'Туслан гүйцэтгэгч компани үүсгэх';
     protected function getCreateFormAction(): \Filament\Actions\Action
     {
         return parent::getCreateFormAction()

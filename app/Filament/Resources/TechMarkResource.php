@@ -17,20 +17,30 @@ class TechMarkResource extends Resource
 {
     protected static ?string $model = TechMark::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-truck';
+    protected static ?string $pluralLabel = 'Техникийн марк';
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Техникийн марк ')
+                    ->placeholder('Техникийн марк оруулах')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
+
                 Forms\Components\Select::make('tech_type_id')
+                    ->native(false)
                     ->relationship('techType', 'name')
+                    ->placeholder('Сонгох')
+                    ->label('Техникийн төрөл')
+                    ->searchable()
+                    ->preload()
                     ->required(),
+                Forms\Components\Toggle::make('status')
+                    ->required()
+                    ->default(true)
+                    ->label('Статус'),
             ]);
     }
 
