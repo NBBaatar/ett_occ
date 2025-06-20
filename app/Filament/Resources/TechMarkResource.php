@@ -18,7 +18,9 @@ class TechMarkResource extends Resource
     protected static ?string $model = TechMark::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-truck';
+    protected static ?string $navigationGroup = 'Техник';
     protected static ?string $pluralLabel = 'Техникийн марк';
+    protected static ?int $navigationSort = 3;
     public static function form(Form $form): Form
     {
         return $form
@@ -49,10 +51,15 @@ class TechMarkResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->label('Техникийн Марк')
+                    ->sortable()
+                    ->searchable(isIndividual: false, isGlobal: true),
                 Tables\Columns\IconColumn::make('status')
+                    ->label('Төлөв')
+                    ->sortable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('techType.name')
+                    ->label('Төхникийн төрөл')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -68,12 +75,13 @@ class TechMarkResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()->label('Харах'),
+                Tables\Actions\EditAction::make()->label('Засах'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
+                ])->label('Үйлдэл'),
             ]);
     }
 

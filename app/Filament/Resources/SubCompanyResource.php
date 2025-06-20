@@ -19,6 +19,8 @@ class SubCompanyResource extends Resource
     // protected static bool $shouldRegisterNavigation = false;
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
     protected static ?string $pluralLabel = 'Гэрээт';
+    protected static ?string $navigationGroup = 'Төсөл';
+    protected static ?int $navigationSort = 4;
     public static function form(Form $form): Form
     {
         return $form

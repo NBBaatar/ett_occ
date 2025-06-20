@@ -21,6 +21,8 @@ class EmployeeResource extends Resource
     protected static ?string $model = Employee::class;
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?string $pluralLabel = 'Ажилтан бүртгэл';
+    protected static ?string $navigationGroup = 'Цахим бүртгэл';
+    protected static ?int $navigationSort = 1;
     // protected static ?string $modelLabel = 'Ажилтан';
 
     public static function form(Form $form): Form

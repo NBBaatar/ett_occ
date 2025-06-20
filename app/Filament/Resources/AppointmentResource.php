@@ -19,6 +19,8 @@ class AppointmentResource extends Resource
     // protected static bool $shouldRegisterNavigation = false;  //Hide Menu Item from sidebar
     protected static ?string $navigationIcon = 'heroicon-o-queue-list';
     protected static ?string $pluralLabel = 'Албан тушаал';
+    protected static ?string $navigationGroup = 'Цахим бүртгэл';
+    protected static ?int $navigationSort = 2;
     public static function form(Form $form): Form
     {
         return $form

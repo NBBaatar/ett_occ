@@ -19,6 +19,8 @@ class RegionResource extends Resource
     // protected static bool $shouldRegisterNavigation = false;
     protected static ?string $navigationIcon = 'heroicon-o-map';
     protected static ?string $pluralLabel = 'Харьяалал';
+    protected static ?string $navigationGroup = 'Цахим бүртгэл';
+    protected static ?int $navigationSort = 3;
     public static function form(Form $form): Form
     {
         return $form

@@ -19,6 +19,8 @@ class CoOperationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
     protected static ?string $pluralLabel = 'Түншлэл';
+    protected static ?string $navigationGroup = 'Төсөл';
+    protected static ?int $navigationSort = 2;
     public static function form(Form $form): Form
     {
         return $form

@@ -21,6 +21,7 @@ class PointResource extends Resource
      // protected static bool $shouldRegisterNavigation = false;
     protected static ?string $pluralLabel = 'Шалган нэвтрүүлэх цэг';
     protected static ?string $navigationIcon = 'heroicon-o-arrow-left-start-on-rectangle';
+    protected static ?string $navigationGroup = 'ШНЦ';
 
     public static function form(Form $form): Form
     {

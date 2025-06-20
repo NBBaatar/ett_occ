@@ -19,6 +19,8 @@ class ShiftResource extends Resource
     // protected static bool $shouldRegisterNavigation = false;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $pluralLabel = 'Ээлжүүд';
+    protected static ?string $navigationGroup = 'Цахим бүртгэл';
+    protected static ?int $navigationSort = 4;
     public static function form(Form $form): Form
     {
         return $form

@@ -18,8 +18,9 @@ class TechTypeResource extends Resource
     protected static ?string $model = TechType::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
-
+    protected static ?string $navigationGroup = 'Техник';
     protected static ?string $pluralLabel = 'Техникийн төрөл';
+    protected static ?int $navigationSort = 2;
     public static function form(Form $form): Form
     {
         return $form
@@ -49,10 +50,15 @@ class TechTypeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->label('Төхникийн төрөл')
+                    ->sortable()
+                    ->searchable(isIndividual: false, isGlobal: true),
                 Tables\Columns\IconColumn::make('status')
+                    ->sortable()
+                    ->label('Төлөв')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('techCategory.name')
+                    ->label('Төхникийн ангилал')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -68,12 +74,13 @@ class TechTypeResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()->label('Харах'),
+                Tables\Actions\EditAction::make()->label('Засах'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
+                ])->label('Үйлдэл'),
             ]);
     }
 

@@ -18,8 +18,10 @@ class TechCategoryResource extends Resource
     protected static ?string $model = TechCategory::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
-
+    protected static ?string $navigationGroup = 'Техник';
     protected static ?string $pluralLabel = 'Техникийн ангилал';
+    protected static ?int $navigationSort = 1;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -41,8 +43,12 @@ class TechCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->label('Ангилал')
+                    ->sortable()
+                    ->searchable(isIndividual: false, isGlobal: true),
                 Tables\Columns\IconColumn::make('status')
+                    ->label('Төлөв')
+                    ->sortable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -57,12 +63,13 @@ class TechCategoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()->label('Харах'),
+                Tables\Actions\EditAction::make()->label('Засах'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
+                ])->label('Үйлдэл'),
             ]);
     }
 
