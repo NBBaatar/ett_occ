@@ -60,6 +60,7 @@ class TechTypeResource extends Resource
                 Tables\Columns\TextColumn::make('techCategory.name')
                     ->label('Төхникийн ангилал')
                     ->numeric()
+                    ->searchable(isIndividual: false, isGlobal: true)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
