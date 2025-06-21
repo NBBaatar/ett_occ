@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class MiningSiteResource extends Resource
 {
     protected static ?string $model = MiningSite::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
     protected static ?string $pluralLabel = 'Төслийн талбай';
     protected static ?string $navigationGroup = 'Төсөл';
@@ -26,7 +25,7 @@ class MiningSiteResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label('Төслийн нэр')
+                ->label('Төслийн нэр')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('code')
