@@ -21,30 +21,36 @@ class AppointmentResource extends Resource
     protected static ?string $pluralLabel = 'Албан тушаал';
     protected static ?string $navigationGroup = 'Цахим бүртгэл';
     protected static ?int $navigationSort = 2;
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Албан тушаал')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('is_active')
-                    ->label('Төлөв')
-                    ->required(),
+            -> schema([
+                Forms\Components\TextInput ::make('name')
+                    -> label('Албан тушаал')
+                    -> required()
+                    -> maxLength(255),
+                Forms\Components\Toggle ::make('is_active')
+                    -> label('Төлөв')
+                    -> required(),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Албан тушаал')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->label('Төлөв')
-                    ->boolean(),
+            -> columns([
+                Tables\Columns\TextColumn ::make('name')
+                    -> label('Албан тушаал')
+                    -> searchable(),
+                Tables\Columns\IconColumn ::make('is_active')
+                    -> label('Төлөв')
+                    -> boolean(),
                 // Tables\Columns\TextColumn::make('created_at')
                 //     ->dateTime()
                 //     ->sortable()
@@ -54,17 +60,17 @@ class AppointmentResource extends Resource
                 //     ->sortable()
                 //     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
+            -> filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make()->label('Харах'),
-                Tables\Actions\EditAction::make()->label('Засах'),
+            -> actions([
+                Tables\Actions\ViewAction ::make() -> label('Харах'),
+                Tables\Actions\EditAction ::make() -> label('Засах'),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
-                ])->label('Үйлдэл'),
+            -> bulkActions([
+                Tables\Actions\BulkActionGroup ::make([
+                    Tables\Actions\DeleteBulkAction ::make() -> label('Устгах'),
+                ]) -> label('Үйлдэл'),
             ]);
     }
 
@@ -78,10 +84,10 @@ class AppointmentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAppointments::route('/'),
-            'create' => Pages\CreateAppointment::route('/create'),
-            'view' => Pages\ViewAppointment::route('/{record}'),
-            'edit' => Pages\EditAppointment::route('/{record}/edit'),
+            'index' => Pages\ListAppointments ::route('/'),
+            'create' => Pages\CreateAppointment ::route('/create'),
+            'view' => Pages\ViewAppointment ::route('/{record}'),
+            'edit' => Pages\EditAppointment ::route('/{record}/edit'),
         ];
     }
 }

@@ -15,45 +15,51 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Collection;
+
 class PointResource extends Resource
 {
     protected static ?string $model = Point::class;
-     // protected static bool $shouldRegisterNavigation = false;
+    // protected static bool $shouldRegisterNavigation = false;
     protected static ?string $pluralLabel = 'Шалган нэвтрүүлэх цэг';
     protected static ?string $navigationIcon = 'heroicon-o-arrow-left-start-on-rectangle';
     protected static ?string $navigationGroup = 'ШНЦ';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('ШНЦ -н дугаар')
-                    ->required()
-                    ->numeric()
-                    ->maxLength(255),
+            -> schema([
+                Forms\Components\TextInput ::make('name')
+                    -> label('ШНЦ -н дугаар')
+                    -> required()
+                    -> numeric()
+                    -> maxLength(255),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('ШНЦ -н дугаар')
-                    ->searchable(),
+            -> columns([
+                Tables\Columns\TextColumn ::make('name')
+                    -> label('ШНЦ -н дугаар')
+                    -> searchable(),
             ])
-            ->filters([
+            -> filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make()->label('Харах'),
-                Tables\Actions\EditAction::make()->label('Засах'),
+            -> actions([
+                Tables\Actions\ViewAction ::make() -> label('Харах'),
+                Tables\Actions\EditAction ::make() -> label('Засах'),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
-                ])->label('Үйлдэл'),
+            -> bulkActions([
+                Tables\Actions\BulkActionGroup ::make([
+                    Tables\Actions\DeleteBulkAction ::make() -> label('Устгах'),
+                ]) -> label('Үйлдэл'),
             ]);
     }
 
@@ -67,9 +73,9 @@ class PointResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPoints::route('/'),
-            'create' => Pages\CreatePoint::route('/create'),
-            'edit' => Pages\EditPoint::route('/{record}/edit'),
+            'index' => Pages\ListPoints ::route('/'),
+            'create' => Pages\CreatePoint ::route('/create'),
+            'edit' => Pages\EditPoint ::route('/{record}/edit'),
         ];
     }
 }

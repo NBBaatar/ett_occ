@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_card')->default(false);
             $table->boolean('is_tech')->default(false);
+            $table->boolean('is_client')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

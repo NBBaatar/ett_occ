@@ -22,68 +22,73 @@ class TechSpecsResource extends Resource
     protected static ?string $pluralLabel = 'Техникийн хүчин чадал';
     protected static ?int $navigationSort = 5;
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            -> schema([
 
-                Forms\Components\Select::make('tech_type_id')
-				     ->native(false)
-				     ->relationship('techType', 'name')
-				     ->placeholder('Сонгох')
-				     ->label('Техникийн төрөл сонгох')
-				     ->searchable()
-				     ->required()
-				     ->preload(),
-                Forms\Components\TextInput::make('name')
-                    ->label('Хүчин чадал')
-                    ->placeholder('Техникийн хүчин чадлын мэдээлэл оруулах')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('is_active')
-				                ->default(true)
-				                ->required()
-				                ->label('Статус'),
+                Forms\Components\Select ::make('tech_type_id')
+                    -> native(false)
+                    -> relationship('techType', 'name')
+                    -> placeholder('Сонгох')
+                    -> label('Техникийн төрөл сонгох')
+                    -> searchable()
+                    -> required()
+                    -> preload(),
+                Forms\Components\TextInput ::make('name')
+                    -> label('Хүчин чадал')
+                    -> placeholder('Техникийн хүчин чадлын мэдээлэл оруулах')
+                    -> required()
+                    -> maxLength(255),
+                Forms\Components\Toggle ::make('is_active')
+                    -> default(true)
+                    -> required()
+                    -> label('Статус'),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name')
-				                ->label('Хүчин чадал')
-				                ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('techType.name')
-				                ->label('Техникийн төрөл')
-				                ->sortable()
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('is_active')
-				                ->label('Төлөв')
-				                ->sortable()
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+            -> columns([
+                Tables\Columns\TextColumn ::make('name')
+                    -> label('Хүчин чадал')
+                    -> sortable()
+                    -> searchable(),
+                Tables\Columns\TextColumn ::make('techType.name')
+                    -> label('Техникийн төрөл')
+                    -> sortable()
+                    -> numeric()
+                    -> sortable(),
+                Tables\Columns\IconColumn ::make('is_active')
+                    -> label('Төлөв')
+                    -> sortable()
+                    -> boolean(),
+                Tables\Columns\TextColumn ::make('created_at')
+                    -> dateTime()
+                    -> sortable()
+                    -> toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn ::make('updated_at')
+                    -> dateTime()
+                    -> sortable()
+                    -> toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
+            -> filters([
                 //
             ])
-            ->actions([
-				            Tables\Actions\ViewAction::make()->label('Харах'),
-				            Tables\Actions\EditAction::make()->label('Засах'),
+            -> actions([
+                Tables\Actions\ViewAction ::make() -> label('Харах'),
+                Tables\Actions\EditAction ::make() -> label('Засах'),
             ])
-            ->bulkActions([
-				            Tables\Actions\BulkActionGroup::make([
-								            Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
-				            ])->label('Үйлдэл'),
+            -> bulkActions([
+                Tables\Actions\BulkActionGroup ::make([
+                    Tables\Actions\DeleteBulkAction ::make() -> label('Устгах'),
+                ]) -> label('Үйлдэл'),
             ]);
     }
 
@@ -97,9 +102,9 @@ class TechSpecsResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTechSpecs::route('/'),
-            'create' => Pages\CreateTechSpecs::route('/create'),
-            'edit' => Pages\EditTechSpecs::route('/{record}/edit'),
+            'index' => Pages\ListTechSpecs ::route('/'),
+            'create' => Pages\CreateTechSpecs ::route('/create'),
+            'edit' => Pages\EditTechSpecs ::route('/{record}/edit'),
         ];
     }
 }

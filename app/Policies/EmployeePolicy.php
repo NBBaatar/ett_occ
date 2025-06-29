@@ -14,13 +14,15 @@ class EmployeePolicy
      */
     public function viewAny(User $user): bool
     {
-        if(Filament::getCurrentPanel()->getId() === 'admin'){
-            return $user->id == 1;
-        }
-        if(Filament::getCurrentPanel()->getId() === 'app'){
-            return $user->id == 1 || $user->id == 2;
-        }
-        return false;
+        return true;
+//        if (Filament ::getCurrentPanel() -> getId() === 'admin') {
+//            return $user -> id == true;
+//        }
+//        if (Filament ::getCurrentPanel() -> getId() === 'app') {
+//            return $user -> isAdmin() == true || $user -> isCard() == true || $user -> isClient() == true;
+//        }
+//
+//        return $user;
     }
 
     /**
@@ -28,13 +30,13 @@ class EmployeePolicy
      */
     public function view(User $user, Employee $employee): bool
     {
-        if(Filament::getCurrentPanel()->getId() === 'admin'){
-            return $user->id == 1;
+        if (Filament ::getCurrentPanel() -> getId() === 'admin') {
+            return $user -> isAdmin() == true;
         }
-        if(Filament::getCurrentPanel()->getId() === 'app'){
-            return $user->id == 1 || $user->id == 2;
+        if (Filament ::getCurrentPanel() -> getId() === 'app') {
+            return $user -> isAdmin() == true || $user -> isCard() == true || $user -> isClient() == true;
         }
-        return false;
+        return $user;
     }
 
     /**
@@ -42,13 +44,13 @@ class EmployeePolicy
      */
     public function create(User $user): bool
     {
-        if(Filament::getCurrentPanel()->getId() === 'admin'){
-            return $user->id == 1;
-        }
-        if(Filament::getCurrentPanel()->getId() === 'app'){
-            return $user->id == 1 || $user->id == 2;
-        }
-        return $user;
+//        if (Filament ::getCurrentPanel() -> getId() === 'admin') {
+//            return $user -> isAdmin() == true;
+//        }
+//        if (Filament ::getCurrentPanel() -> getId() === 'app') {
+//            return $user -> isAdmin() == true || $user -> isCard() == true || $user -> isClient() == true;
+//        }
+        return true;
     }
 
     /**
@@ -56,13 +58,13 @@ class EmployeePolicy
      */
     public function update(User $user, Employee $employee): bool
     {
-        if(Filament::getCurrentPanel()->getId() === 'admin'){
-            return $user->id === 1;
+        if (Filament ::getCurrentPanel() -> getId() === 'admin') {
+            return $user -> isAdmin() == true;
         }
-        if(Filament::getCurrentPanel()->getId() === 'app'){
-            return $user->id == 1 || $user->id == 2;
+        if (Filament ::getCurrentPanel() -> getId() === 'app') {
+            return $user -> isAdmin() == true || $user -> isCard() == true;
         }
-		    return $user;
+        return $user;
     }
 
     /**
@@ -70,11 +72,11 @@ class EmployeePolicy
      */
     public function delete(User $user, Employee $employee): bool
     {
-        if(Filament::getCurrentPanel()->getId() === 'admin'){
-            return $user->id == 1;
+        if (Filament ::getCurrentPanel() -> getId() === 'admin') {
+            return $user -> isAdmin() == true;
         }
 
-		    return $user;
+        return $user;
     }
 
     /**
@@ -82,11 +84,11 @@ class EmployeePolicy
      */
     public function restore(User $user, Employee $employee): bool
     {
-        if(Filament::getCurrentPanel()->getId() === 'admin'){
-            return $user->id == 1;
+        if (Filament ::getCurrentPanel() -> getId() === 'admin') {
+            return $user -> isAdmin() == true;
         }
 
-		    return $user;
+        return $user;
     }
 
     /**
@@ -94,9 +96,9 @@ class EmployeePolicy
      */
     public function forceDelete(User $user, Employee $employee): bool
     {
-        if(Filament::getCurrentPanel()->getId() === 'admin'){
-            return $user->id == 1;
+        if (Filament ::getCurrentPanel() -> getId() === 'admin') {
+            return $user -> isAdmin() == true;
         }
-		    return $user;
+        return $user;
     }
 }

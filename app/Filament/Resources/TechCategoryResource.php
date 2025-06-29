@@ -22,54 +22,59 @@ class TechCategoryResource extends Resource
     protected static ?string $pluralLabel = 'Техникийн ангилал';
     protected static ?int $navigationSort = 1;
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->placeholder('Техник ангиллын нэр')
-                    ->label('Ангиллын нэр'),
-                Forms\Components\Toggle::make('status')
-                    ->default(true)
-                    ->required()
-                    ->label('Техник ангилал статус'),
+            -> schema([
+                Forms\Components\TextInput ::make('name')
+                    -> required()
+                    -> maxLength(255)
+                    -> placeholder('Техник ангиллын нэр')
+                    -> label('Ангиллын нэр'),
+                Forms\Components\Toggle ::make('status')
+                    -> default(true)
+                    -> required()
+                    -> label('Техник ангилал статус'),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Ангилал')
-                    ->sortable()
-                    ->searchable(isIndividual: false, isGlobal: true),
-                Tables\Columns\IconColumn::make('status')
-                    ->label('Төлөв')
-                    ->sortable()
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+            -> columns([
+                Tables\Columns\TextColumn ::make('name')
+                    -> label('Ангилал')
+                    -> sortable()
+                    -> searchable(isIndividual: false, isGlobal: true),
+                Tables\Columns\IconColumn ::make('status')
+                    -> label('Төлөв')
+                    -> sortable()
+                    -> boolean(),
+                Tables\Columns\TextColumn ::make('created_at')
+                    -> dateTime()
+                    -> sortable()
+                    -> toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn ::make('updated_at')
+                    -> dateTime()
+                    -> sortable()
+                    -> toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
+            -> filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make()->label('Харах'),
-                Tables\Actions\EditAction::make()->label('Засах'),
+            -> actions([
+                Tables\Actions\ViewAction ::make() -> label('Харах'),
+                Tables\Actions\EditAction ::make() -> label('Засах'),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
-                ])->label('Үйлдэл'),
+            -> bulkActions([
+                Tables\Actions\BulkActionGroup ::make([
+                    Tables\Actions\DeleteBulkAction ::make() -> label('Устгах'),
+                ]) -> label('Үйлдэл'),
             ]);
     }
 
@@ -83,9 +88,9 @@ class TechCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTechCategories::route('/'),
-            'create' => Pages\CreateTechCategory::route('/create'),
-            'edit' => Pages\EditTechCategory::route('/{record}/edit'),
+            'index' => Pages\ListTechCategories ::route('/'),
+            'create' => Pages\CreateTechCategory ::route('/create'),
+            'edit' => Pages\EditTechCategory ::route('/{record}/edit'),
         ];
     }
 }

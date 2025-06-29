@@ -21,45 +21,51 @@ class SubCompanyResource extends Resource
     protected static ?string $pluralLabel = 'Гэрээт';
     protected static ?string $navigationGroup = 'Төсөл';
     protected static ?int $navigationSort = 4;
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\Select::make('company_id')
-                    ->native(false)
-                    ->relationship(name: 'company', titleAttribute: 'name')
-                    ->placeholder('Сонгох')
-                    ->label('Толгой компани')
-                    ->searchable()
-                    ->preload(),
-                Forms\Components\TextInput::make('name')
-                    ->label('Нэр')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('code')
-                     ->label('Компанийн код')
-                    ->required()
-                    ->maxLength(2),
-                Forms\Components\Toggle::make('is_active')
-                    ->label('Төлөв')
-                    ->required(),
+            -> schema([
+                Forms\Components\Select ::make('company_id')
+                    -> native(false)
+                    -> relationship(name: 'company', titleAttribute: 'name')
+                    -> placeholder('Сонгох')
+                    -> label('Толгой компани')
+                    -> searchable()
+                    -> preload(),
+                Forms\Components\TextInput ::make('name')
+                    -> label('Нэр')
+                    -> required()
+                    -> maxLength(255),
+                Forms\Components\TextInput ::make('code')
+                    -> label('Компанийн код')
+                    -> required()
+                    -> maxLength(2),
+                Forms\Components\Toggle ::make('is_active')
+                    -> label('Төлөв')
+                    -> required(),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('company.name')
-                    ->label('Толгой компани')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Нэр')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('code')
-                ->label('Компанийн код')
-                    ->searchable(),
+            -> columns([
+                Tables\Columns\TextColumn ::make('company.name')
+                    -> label('Толгой компани')
+                    -> numeric()
+                    -> sortable(),
+                Tables\Columns\TextColumn ::make('name')
+                    -> label('Нэр')
+                    -> searchable(),
+                Tables\Columns\TextColumn ::make('code')
+                    -> label('Компанийн код')
+                    -> searchable(),
                 // Tables\Columns\IconColumn::make('is_active')
                 //     ->boolean(),
                 // Tables\Columns\TextColumn::make('created_at')
@@ -67,17 +73,17 @@ class SubCompanyResource extends Resource
                 //     ->sortable()
                 //     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
+            -> filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make()->label('Харах'),
-                Tables\Actions\EditAction::make()->label('Засах'),
+            -> actions([
+                Tables\Actions\ViewAction ::make() -> label('Харах'),
+                Tables\Actions\EditAction ::make() -> label('Засах'),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
-                ])->label('Үйлдэл'),
+            -> bulkActions([
+                Tables\Actions\BulkActionGroup ::make([
+                    Tables\Actions\DeleteBulkAction ::make() -> label('Устгах'),
+                ]) -> label('Үйлдэл'),
 
             ]);
     }
@@ -92,10 +98,10 @@ class SubCompanyResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSubCompanies::route('/'),
-            'create' => Pages\CreateSubCompany::route('/create'),
-            'view' => Pages\ViewSubCompany::route('/{record}'),
-            'edit' => Pages\EditSubCompany::route('/{record}/edit'),
+            'index' => Pages\ListSubCompanies ::route('/'),
+            'create' => Pages\CreateSubCompany ::route('/create'),
+            'view' => Pages\ViewSubCompany ::route('/{record}'),
+            'edit' => Pages\EditSubCompany ::route('/{record}/edit'),
         ];
     }
 }

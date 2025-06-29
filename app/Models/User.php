@@ -14,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable implements  HasTenants, FilamentUser
+class User extends Authenticatable implements HasTenants, FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -31,6 +31,7 @@ class User extends Authenticatable implements  HasTenants, FilamentUser
         'is_admin',
         'is_card',
         'is_tech',
+        'is_client',
     ];
 
     /**
@@ -59,43 +60,55 @@ class User extends Authenticatable implements  HasTenants, FilamentUser
             'is_tech' => 'boolean',
         ];
     }
+
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class);
-    }
-   public function getTenants(Panel $panel): Collection
-    {
-        return $this->teams;
+        return $this -> belongsToMany(Team::class);
     }
 
-     public function canAccessTenant(Model $tenant): bool
+    public function getTenants(Panel $panel): Collection
     {
-        return $this->teams()->whereKey($tenant)->exists();
+        return $this -> teams;
     }
+
+    public function canAccessTenant(Model $tenant): bool
+    {
+        return $this -> teams() -> whereKey($tenant) -> exists();
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
-        if($panel->getId() === 'admin'){
-            return str_ends_with($this->is_admin, '1' );
+        if ($panel -> getId() === 'admin') {
+            return str_ends_with($this -> is_admin, '1');
         }
-        if($panel->getId() === 'app'){
-            return str_ends_with($this->is_card, '1' );
+        if ($panel -> getId() === 'app') {
+            return str_ends_with($this -> is_card || $this -> is_client, '1');
         }
-        if($panel->getId() === 'tech'){
-            return str_ends_with($this->is_tech, '1' );
+
+        if ($panel -> getId() === 'tech') {
+            return str_ends_with($this -> is_tech, '1');
         }
         return false;
     }
-    public function isAdmin (): bool
+
+    public function isAdmin(): bool
     {
-        return $this->is_admin === true;
+        return $this -> is_admin === true;
     }
-    public function isCard (): bool
+
+    public function isCard(): bool
     {
-        return $this->is_card === true;
+        return $this -> is_card === true;
     }
-    public function isTech (): bool
+
+    public function isTech(): bool
     {
-        return $this->is_tech === true;
+        return $this -> is_tech === true;
+    }
+
+    public function isClient(): bool
+    {
+        return $this -> is_client === true;
     }
 
 }

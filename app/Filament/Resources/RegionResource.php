@@ -21,30 +21,36 @@ class RegionResource extends Resource
     protected static ?string $pluralLabel = 'Харьяалал';
     protected static ?string $navigationGroup = 'Цахим бүртгэл';
     protected static ?int $navigationSort = 3;
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Харьяаллын нэр')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('is_active')
-                    ->label('Төлөв')
-                    ->required(),
+            -> schema([
+                Forms\Components\TextInput ::make('name')
+                    -> label('Харьяаллын нэр')
+                    -> required()
+                    -> maxLength(255),
+                Forms\Components\Toggle ::make('is_active')
+                    -> label('Төлөв')
+                    -> required(),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Харьяалах газрын нэр')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->label('Төлөв')
-                    ->boolean(),
+            -> columns([
+                Tables\Columns\TextColumn ::make('name')
+                    -> label('Харьяалах газрын нэр')
+                    -> searchable(),
+                Tables\Columns\IconColumn ::make('is_active')
+                    -> label('Төлөв')
+                    -> boolean(),
                 // Tables\Columns\TextColumn::make('created_at')
                 //     ->dateTime()
                 //     ->sortable()
@@ -54,17 +60,17 @@ class RegionResource extends Resource
                 //     ->sortable()
                 //     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
+            -> filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make()->label('Харах'),
-                Tables\Actions\EditAction::make()->label('Засах'),
+            -> actions([
+                Tables\Actions\ViewAction ::make() -> label('Харах'),
+                Tables\Actions\EditAction ::make() -> label('Засах'),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()->label('Устгах'),
-                ])->label('Үйлдэл'),
+            -> bulkActions([
+                Tables\Actions\BulkActionGroup ::make([
+                    Tables\Actions\DeleteBulkAction ::make() -> label('Устгах'),
+                ]) -> label('Үйлдэл'),
             ]);
     }
 
@@ -78,10 +84,10 @@ class RegionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRegions::route('/'),
-            'create' => Pages\CreateRegion::route('/create'),
-            'view' => Pages\ViewRegion::route('/{record}'),
-            'edit' => Pages\EditRegion::route('/{record}/edit'),
+            'index' => Pages\ListRegions ::route('/'),
+            'create' => Pages\CreateRegion ::route('/create'),
+            'view' => Pages\ViewRegion ::route('/{record}'),
+            'edit' => Pages\EditRegion ::route('/{record}/edit'),
         ];
     }
 }
