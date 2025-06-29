@@ -205,6 +205,7 @@ class EmployeeResource extends Resource
                             -> label('Картын дугаар')
                             -> placeholder('Картын дугаар уншигчаас оруулах')
                             -> numeric()
+                            -> visible(fn (): bool => auth() -> user() -> isAdmin())
                             -> maxLength(255),
                         Forms\Components\Select ::make('point_id')
                             -> native(false)
@@ -221,11 +222,13 @@ class EmployeeResource extends Resource
                             -> maxLength(255)
                             -> unique(Employee::class, 'employee_uid', ignoreRecord: true)
                             -> columnSpan('full')
+                            -> visible(fn (): bool => auth() -> user() -> isAdmin())
                             -> dehydrated(),
                     ]) -> columns(3),
                 Forms\Components\Toggle ::make('is_active')
                     -> required()
                     -> default(true)
+                    -> visible(fn (): bool => auth() -> user() -> isAdmin())
                     -> label('Ажиллаж байгаа эсэх'),
 
             ]);

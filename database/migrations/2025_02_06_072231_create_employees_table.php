@@ -31,8 +31,8 @@ return new class extends Migration {
             $table -> foreignId('training_id') -> constrained('trainings') -> cascadeOnDelete() -> nullable();
             $table -> string('is_trained_status') -> nullable();
 //            $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete()->nullable();
-            $table -> string('card_number') -> unique() -> nullable(false);
-            $table -> string('employee_uid') -> unique() -> nullable(false);
+            $table -> string('card_number') -> unique() -> nullable();
+            $table -> string('employee_uid') -> unique() -> nullable();
             $table -> text('hse_description') -> nullable();
             $table -> text('description') -> nullable();
             $table -> string('file') -> nullable();
