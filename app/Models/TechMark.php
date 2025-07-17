@@ -9,6 +9,7 @@ class TechMark extends Model
 {
     protected $fillable = [
         'name',
+        'brand',
         'status',
         'tech_type_id'
     ];

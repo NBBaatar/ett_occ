@@ -36,6 +36,11 @@ class TechTypeResource extends Resource
                     -> maxLength(255)
                     -> placeholder('Техник төрлийн нэр')
                     -> label('Төрлийн нэр'),
+                Forms\Components\TextInput ::make('specs')
+                    -> required()
+                    -> maxLength(255)
+                    -> placeholder('Техник үзүүлэлт')
+                    -> label('Төрлийн үзүүлэлт'),
 
                 Forms\Components\Select ::make('tech_category_id')
                     -> placeholder(' Сонгох')
@@ -57,6 +62,10 @@ class TechTypeResource extends Resource
             -> columns([
                 Tables\Columns\TextColumn ::make('name')
                     -> label('Төхникийн төрөл')
+                    -> sortable()
+                    -> searchable(isIndividual: false, isGlobal: true),
+                Tables\Columns\TextColumn ::make('specs')
+                    -> label('Төхникийн үзүүлэлт')
                     -> sortable()
                     -> searchable(isIndividual: false, isGlobal: true),
                 Tables\Columns\IconColumn ::make('status')

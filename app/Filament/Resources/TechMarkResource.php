@@ -31,6 +31,11 @@ class TechMarkResource extends Resource
     {
         return $form
             -> schema([
+                Forms\Components\TextInput ::make('brand')
+                    -> label('Техникийн бренд ')
+                    -> placeholder('Техникийн марк оруулах')
+                    -> required()
+                    -> maxLength(255),
                 Forms\Components\TextInput ::make('name')
                     -> label('Техникийн марк ')
                     -> placeholder('Техникийн марк оруулах')

@@ -12,6 +12,7 @@ class TechType extends Model
     protected $fillable = [
         'name',
         'status',
+        'specs',
         'tech_category_id'
         ];
 
