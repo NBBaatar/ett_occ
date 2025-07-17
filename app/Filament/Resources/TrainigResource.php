@@ -57,7 +57,14 @@ class TrainigResource extends Resource
     {
         return $table
             -> columns([
-                //
+                Tables\Columns\TextColumn ::make('name')
+                    -> label('Сургалтын төрөл'),
+                Tables\Columns\TextColumn ::make('training_hour')
+                    -> label('Хамрагдвал зохих'),
+                Tables\Columns\IconColumn ::make('is_active')
+                    -> label('Төлөв')
+                    -> sortable()
+                    -> boolean(),
             ])
             -> filters([
                 //
