@@ -2,6 +2,7 @@
 
 namespace App\Filament\App\Resources;
 
+use App\Enums\TrainingStatus;
 use App\Filament\App\Resources\EmployeeResource\Pages;
 use App\Filament\App\Resources\EmployeeResource\RelationManagers;
 use App\Models\Company;
@@ -9,7 +10,6 @@ use App\Models\CoOperation;
 use App\Models\Employee;
 use App\Models\MiningSite;
 use App\Models\SubCompany;
-use App\TrainingStatus;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -17,8 +17,6 @@ use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Collection;
 
 class EmployeeResource extends Resource

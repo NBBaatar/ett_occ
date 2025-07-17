@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\TrainingStatus;
+use App\Enums\TrainingStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
