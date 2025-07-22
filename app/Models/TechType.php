@@ -24,6 +24,10 @@ class TechType extends Model
     {
         return $this->hasMany(TechMark::class);
     }
+    public function TechRegs() : HasMany
+    {
+        return $this->hasMany(TechReg::class);
+    }
     public function techSpecs() : HasMany
     {
         return $this->hasMany(TechSpecs::class);

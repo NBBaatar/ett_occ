@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\App\Resources\EmployeeResource\Pages;
+namespace App\Filament\Resources\TechRegResource\Pages;
 
-use App\Filament\App\Resources\EmployeeResource;
+use App\Filament\Resources\TechRegResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateEmployee extends CreateRecord
+class CreateTechReg extends CreateRecord
 {
-    protected static string $resource = EmployeeResource::class;
-    protected static ?string $title = 'Шинэ ажилтан үүсгэх';
+    protected static string $resource = TechRegResource::class;
+    protected static ?string $title = 'Шинэ техник үүсгэх';
     protected function getCreateFormAction(): \Filament\Actions\Action
     {
         return parent::getCreateFormAction()
@@ -18,7 +18,7 @@ class CreateEmployee extends CreateRecord
     }
     protected  function getRedirectUrl(): string
     {
-        return \App\Filament\Resources\EmployeeResource ::getUrl('index');
+        return TechRegResource::getUrl('index');
     }
     protected  function getCreatedNotification(): ?Notification
     {

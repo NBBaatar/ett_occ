@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Helper\CustomLogin;
+use App\Filament\Widgets\IframeWidget;
 use App\Http\Middleware\VerifyIsAdmin;
 use App\Http\Middleware\VerifyIsTech;
 use Filament\Http\Middleware\Authenticate;
@@ -56,8 +57,8 @@ class TechPanelProvider extends PanelProvider
             ])
             -> discoverWidgets(in: app_path('Filament/Tech/Widgets'), for: 'App\\Filament\\Tech\\Widgets')
             -> widgets([
-//                Widgets\AccountWidget::class,
-//                Widgets\FilamentInfoWidget::class,
+//                      Widgets\AccountWidget::class,
+                // Widgets\FilamentInfoWidget::class,
             ])
             -> middleware([
                 EncryptCookies::class,
