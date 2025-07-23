@@ -8,7 +8,11 @@ use App\Models\Company;
 use App\Models\CoOperation;
 use App\Models\MiningSite;
 use App\Models\SubCompany;
+use App\Models\TechCategory;
+use App\Models\TechMark;
 use App\Models\TechReg;
+use App\Models\TechSpecs;
+use App\Models\TechType;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -27,7 +31,12 @@ class TechRegResource extends Resource
     protected static ?string $navigationGroup = 'Техник';
     protected static ?string $pluralLabel = 'Техникийн Бүртгэл';
     protected static ?int $navigationSort = 6;
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
     public static function form(Form $form): Form
+
     {
         return $form
             ->schema([
@@ -80,31 +89,39 @@ class TechRegResource extends Resource
                             -> preload(),
                     ]) -> columns(2),
                 Forms\Components\Section::make('Техникийн өөрийн мэдээлэл')
-              -> schema([
-                Forms\Components\Select::make('tech_category_id')
-                    ->relationship('techCategory', 'name')
-                    ->label('Техникийн ангилал')
-                    ->searchable()
-                    ->placeholder('Сонгох')
-                    ->required(),
-                Forms\Components\Select::make('tech_type_id')
-                    ->relationship('techType', 'name')
-                    ->label('Техникийн төрөл')
-                    ->searchable()
-                    ->placeholder('Сонгох')
-                    ->required(),
-                Forms\Components\Select::make('tech_mark_id')
-                    ->relationship('techMark', 'name')
-                    ->label('Техникийн марк, загвар, бренд')
-                    ->searchable()
-                    ->placeholder('Сонгох')
-                    ->required(),
-                Forms\Components\Select::make('tech_specs_id')
-                    ->relationship('techSpecs', 'name')
-                    ->label('Техникийн үзүүлэлт')
-                    ->searchable()
-                    ->placeholder('Сонгох')
-                    ->required(),
+                    -> schema([
+                    Forms\Components\Select::make('tech_category_id')
+                        -> live()
+                        -> options(TechCategory ::all() -> pluck('name', 'id'))
+                        ->native(false)
+                        ->label('Техникийн ангилал')
+                        ->searchable()
+                        ->placeholder('Сонгох')
+                        ->required(),
+                    Forms\Components\Select::make('tech_type_id')
+                        -> live()
+                        -> options(TechType ::all() -> pluck('name', 'id'))
+                        ->native(false)
+                        ->label('Техникийн төрөл')
+                        ->searchable()
+                        ->placeholder('Сонгох')
+                        ->required(),
+                    Forms\Components\Select::make('tech_mark_id')
+                        -> live()
+                        -> options(TechMark ::all() -> pluck('name', 'id'))
+                        ->native(false)
+                        ->label('Техникийн марк, загвар, бренд')
+                        ->searchable()
+                        ->placeholder('Сонгох')
+                        ->required(),
+                    Forms\Components\Select::make('tech_specs_id')
+                        -> live()
+                        -> options(TechSpecs ::all() -> pluck('name', 'id'))
+                        ->native(false)
+                        ->label('Техникийн үзүүлэлт')
+                        ->searchable()
+                        ->placeholder('Сонгох')
+                        ->required(),
                 Forms\Components\TextInput::make('tech_number')
                     ->label('Техникийн улсын дугаар')
                     ->maxLength(255)
@@ -133,11 +150,12 @@ class TechRegResource extends Resource
                 Forms\Components\Repeater ::make('tech_tewsh')
                     ->label('Техникийн тэвш')
                     ->schema([
-                        Forms\Components\Checkbox::make('is_one')
-                            ->label('Дан')
-                            ->required(),
-                        Forms\Components\Checkbox::make('is_double')
-                            ->label('Давхар')
+                        Forms\Components\Radio::make('tevsh')
+                            ->label('Тэвшний төрөл')
+                            ->options([
+                                'is_One' => 'Дан',
+                                'is_double' => 'Давхар'
+                            ])
                             ->required(),
                     ])->addable(false)
                     ->deletable(false)

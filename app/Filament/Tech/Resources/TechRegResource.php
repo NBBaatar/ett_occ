@@ -8,7 +8,11 @@ use App\Models\Company;
 use App\Models\CoOperation;
 use App\Models\MiningSite;
 use App\Models\SubCompany;
+use App\Models\TechCategory;
+use App\Models\TechMark;
 use App\Models\TechReg;
+use App\Models\TechSpecs;
+use App\Models\TechType;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -23,9 +27,14 @@ use Illuminate\Support\Collection;
 class TechRegResource extends Resource
 {
     protected static ?string $model = TechReg::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-plus-circle';
+    protected static ?string $navigationGroup = 'Техник';
     protected static ?string $pluralLabel = 'Техникийн Бүртгэл';
+    protected static ?int $navigationSort = 1;
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -81,25 +90,33 @@ class TechRegResource extends Resource
                 Forms\Components\Section::make('Техникийн өөрийн мэдээлэл')
                     -> schema([
                         Forms\Components\Select::make('tech_category_id')
-                            ->relationship('techCategory', 'name')
+                            -> live()
+                            -> options(TechCategory ::all() -> pluck('name', 'id'))
+                            ->native(false)
                             ->label('Техникийн ангилал')
                             ->searchable()
                             ->placeholder('Сонгох')
                             ->required(),
                         Forms\Components\Select::make('tech_type_id')
-                            ->relationship('techType', 'name')
+                            -> live()
+                            -> options(TechType ::all() -> pluck('name', 'id'))
+                            ->native(false)
                             ->label('Техникийн төрөл')
                             ->searchable()
                             ->placeholder('Сонгох')
                             ->required(),
                         Forms\Components\Select::make('tech_mark_id')
-                            ->relationship('techMark', 'name')
+                            -> live()
+                            -> options(TechMark ::all() -> pluck('name', 'id'))
+                            ->native(false)
                             ->label('Техникийн марк, загвар, бренд')
                             ->searchable()
                             ->placeholder('Сонгох')
                             ->required(),
                         Forms\Components\Select::make('tech_specs_id')
-                            ->relationship('techSpecs', 'name')
+                            -> live()
+                            -> options(TechSpecs ::all() -> pluck('name', 'id'))
+                            ->native(false)
                             ->label('Техникийн үзүүлэлт')
                             ->searchable()
                             ->placeholder('Сонгох')
@@ -132,12 +149,14 @@ class TechRegResource extends Resource
                 Forms\Components\Repeater ::make('tech_tewsh')
                     ->label('Техникийн тэвш')
                     ->schema([
-                        Forms\Components\Checkbox::make('is_one')
-                            ->label('Дан')
+                        Forms\Components\Radio::make('tevsh')
+                            ->label('Тэвшний төрөл')
+                            ->options([
+                                'is_One' => 'Дан',
+                                'is_double' => 'Давхар'
+                            ])
                             ->required(),
-                        Forms\Components\Checkbox::make('is_double')
-                            ->label('Давхар')
-                            ->required(),
+
                     ])->addable(false)
                     ->deletable(false)
                     ->columnSpan('full'),

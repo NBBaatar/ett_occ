@@ -28,7 +28,7 @@ class TechRegPolicy
         if (Filament ::getCurrentPanel() -> getId() === 'tech') {
             return $user -> isAdmin() == true || $user -> isTech() == true;
         }
-        return $user;
+        return false;
     }
 
     /**
@@ -50,7 +50,7 @@ class TechRegPolicy
         if (Filament ::getCurrentPanel() -> getId() === 'tech') {
             return $user -> isAdmin() == true || $user -> isTech() == true;
         }
-        return $user;
+        return false;
     }
 
     /**
@@ -61,7 +61,7 @@ class TechRegPolicy
         if (Filament ::getCurrentPanel() -> getId() === 'admin') {
             return $user -> isAdmin() == true;
         }
-        return $user;
+        return false;
     }
 
     /**
@@ -73,7 +73,7 @@ class TechRegPolicy
             return $user -> isAdmin() == true;
         }
 
-        return $user;
+        return false;
     }
 
     /**
@@ -85,6 +85,6 @@ class TechRegPolicy
             return $user -> isAdmin() == true;
         }
 
-        return $user;
+        return false;
     }
 }
