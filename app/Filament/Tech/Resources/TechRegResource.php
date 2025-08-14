@@ -353,6 +353,27 @@ class TechRegResource extends Resource
                     ->label('Үйлдвэрлэсэн огноо')
                     ->date()
                     ->sortable(),
+                Tables\Columns\IconColumn ::make('tech_tewsh.tevsh')
+                    ->icon(fn (string $state): string => match ($state) {
+                        'is_One' => 'heroicon-o-minus',
+                        'is_double' => 'heroicon-o-plus',
+                    })
+                    ->color(fn (string $state): string => match ($state) {
+                        'is_One' => 'info',
+                        'is_double' => 'warning',
+                    })
+                    ->label('Тэвш')
+                    ->getStateUsing(function ($record) {
+                        if (!$record->tech_tewsh) return null;
+                        return collect($record->tech_tewsh)
+                            ->pluck('tevsh')
+                            ->filter()
+                            ->join(', ');
+                    })
+                    ->sortable()
+                    ->searchable(query: function (Builder $query, string $search) {
+                        return $query->whereJsonContains('tech_tewsh', ['tevsh' => $search]);
+                    }),
 //                Tables\Columns\TextColumn::make('date_of_imported')
 //                    ->date()
 //                    ->sortable(),
