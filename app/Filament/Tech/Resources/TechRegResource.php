@@ -7,6 +7,7 @@ use App\Filament\Tech\Resources\TechRegResource\RelationManagers;
 use App\Models\Company;
 use App\Models\CoOperation;
 use App\Models\MiningSite;
+use App\Models\Property;
 use App\Models\SubCompany;
 use App\Models\TechCategory;
 use App\Models\TechMark;
@@ -119,8 +120,8 @@ class TechRegResource extends Resource
                             ->native(false)
                             ->label('Техникийн үзүүлэлт')
                             ->searchable()
-                            ->placeholder('Сонгох')
-                            ->required(),
+                            ->placeholder('Сонгох'),
+//                        ->required(),
                         Forms\Components\TextInput::make('tech_number')
                             ->label('Техникийн улсын дугаар')
                             ->maxLength(255)
@@ -130,7 +131,7 @@ class TechRegResource extends Resource
                             ->maxLength(255)
                             ->required(),
                         Forms\Components\TextInput::make('tech_aral_numebr')
-                            ->label('Техникийн арлынр дугаар')
+                            ->label('Техникийн арлын дугаар')
                             ->maxLength(255)
                             ->required(),
                         Forms\Components\DatePicker::make('date_of_manufacture')
@@ -147,6 +148,7 @@ class TechRegResource extends Resource
                             -> required()
                     ]) -> columns(2),
                 Forms\Components\Repeater ::make('tech_tewsh')
+                    ->visible(fn (Get $get) => $get('tech_type_id') === '8')
                     ->label('Техникийн тэвш')
                     ->schema([
                         Forms\Components\Radio::make('tevsh')
@@ -155,10 +157,10 @@ class TechRegResource extends Resource
                                 'is_One' => 'Дан',
                                 'is_double' => 'Давхар'
                             ])
-                            ->required(),
-
+//                            ->required(),
                     ])->addable(false)
                     ->deletable(false)
+                    ->reorderable(false)
                     ->columnSpan('full'),
                 Forms\Components\Section::make('Радио станц')
                     ->schema([
@@ -184,67 +186,84 @@ class TechRegResource extends Resource
                     ->columnSpan(2)
                     ->columns()
                     ->schema([
-                        Forms\Components\TextInput::make('property_type')
-                            ->label('Өмчлэгчийн төрөл')
-                            ->maxLength(255)
+//                            Forms\Components\TextInput::make('property_type')
+//                            ->label('Өмчлэгчийн төрөл')
+//                            ->maxLength(255)
+//                            ->required(),
+                        Forms\Components\Select::make('property_id')
+                            -> live()
+                            -> options(Property ::all() -> pluck('name', 'id'))
+                            ->native(false)
+                            ->label('Өмчлөгчийн төрөл')
+                            ->searchable()
+                            ->placeholder('Сонгох')
                             ->required(),
-                        Forms\Components\TextInput::make('property_shift')
+                        Forms\Components\Select::make('company_id')
+                            -> live()
+                            -> options(Company ::all() -> pluck('name', 'id'))
+                            ->native(false)
                             ->label('Компани')
-                            ->maxLength(255)
+                            ->searchable()
+                            ->placeholder('Сонгох')
                             ->required(),
                     ])
-                    ->addActionLabel('Өмчлөгч нэмэх'),
-                Forms\Components\Repeater::make('insurance')
-                    ->label('Даатгалын мэдээлэл')
-                    ->live()
-                    ->columnSpan(2)
-                    ->columns()
-                    ->schema([
-                        Forms\Components\Section::make('Жолоочийн хариуцлага')
-                            ->schema([
-                                Forms\Components\TextInput::make('driver_insurance_company')
-                                    ->label('Даатгал хийгдсэн компани')
-                                    ->maxLength(255)
-                                    ->required(),
-                                Forms\Components\DatePicker::make('driver_insurance_start_date')
-                                    -> native(false)
-                                    -> displayFormat('Y-m-d')
-                                    -> label('Даатгал эхлэх огноо')
-                                    -> placeholder('Он сар өдөр')
-                                    -> required(),
-                                Forms\Components\DatePicker::make('driver_insurance_end_date')
-                                    -> native(false)
-                                    -> displayFormat('Y-m-d')
-                                    -> label('Дуусах огноо')
-                                    -> placeholder('Он сар өдөр')
-                                    -> required(),
-                            ])->columns(2),
-                        Forms\Components\Section::make('Тээврийн хэрэгсэл')
-                            ->schema([
-                                Forms\Components\TextInput::make('tech_insurance_company')
-                                    ->label('Даатгал хийсэн компани')
-                                    ->maxLength(255)
-                                    ->required(),
-                                Forms\Components\DatePicker::make('tech_insurance_start_date')
-                                    -> native(false)
-                                    -> displayFormat('Y-m-d')
-                                    -> label('Даатгал эхлэх огноо')
-                                    -> placeholder('Он сар өдөр')
-                                    -> required(),
-                                Forms\Components\DatePicker::make('tech_insurance_end_date')
-                                    -> native(false)
-                                    -> displayFormat('Y-m-d')
-                                    -> label('Дуусах огноо')
-                                    -> placeholder('Он сар өдөр')
-                                    -> required(),
-                            ])->columns(2),
-                    ])->addable(false) ->deletable(false),
+                    ->addActionLabel('Өмчлөгч нэмэх')->reorderable(false),
+//                Forms\Components\Repeater::make('insurance')
+//                    ->label('Даатгалын мэдээлэл')
+//                    ->live()
+//                    ->columnSpan(2)
+//                    ->columns()
+//                ->schema([
+//                    Forms\Components\Section::make('Жолоочийн хариуцлага')
+//                    ->schema([
+//                        Forms\Components\TextInput::make('driver_insurance_company')
+//                            ->label('Даатгал хийгдсэн компани')
+//                            ->maxLength(255)
+//                            ->required(),
+//                        Forms\Components\DatePicker::make('driver_insurance_start_date')
+//                            -> native(false)
+//                            -> displayFormat('Y-m-d')
+//                            -> label('Даатгал эхлэх огноо')
+//                            -> placeholder('Он сар өдөр')
+//                            -> required(),
+//                        Forms\Components\DatePicker::make('driver_insurance_end_date')
+//                            -> native(false)
+//                            -> displayFormat('Y-m-d')
+//                            -> label('Дуусах огноо')
+//                            -> placeholder('Он сар өдөр')
+//                            -> required(),
+//                    ])->columns(2),
+//                    Forms\Components\Section::make('Тээврийн хэрэгсэл')
+//                    ->schema([
+//                        Forms\Components\TextInput::make('tech_insurance_company')
+//                            ->label('Даатгал хийсэн компани')
+//                            ->maxLength(255)
+//                            ->required(),
+//                        Forms\Components\DatePicker::make('tech_insurance_start_date')
+//                            -> native(false)
+//                            -> displayFormat('Y-m-d')
+//                            -> label('Даатгал эхлэх огноо')
+//                            -> placeholder('Он сар өдөр')
+//                            -> required(),
+//                        Forms\Components\DatePicker::make('tech_insurance_end_date')
+//                            -> native(false)
+//                            -> displayFormat('Y-m-d')
+//                            -> label('Дуусах огноо')
+//                            -> placeholder('Он сар өдөр')
+//                            -> required(),
+//                    ])->columns(2),
+//                ])->addable(false) ->deletable(false),
                 Forms\Components\Repeater::make('tech_permission')
                     ->live()
                     ->label('Зөвшөөрөл олголт')
                     ->columns()
                     ->columnSpan(2)
                     ->schema([
+                        Forms\Components\Textarea ::make('description')
+                            -> label('Tайлбар')
+                            -> placeholder('Тайлбар оруулах')
+                            -> autosize()
+                            -> columnSpan('full'),
                         Forms\Components\TextInput::make('request_num')
                             ->label('Хүсэлт ирүүлсэн албан тоотын дугаар')
                             ->maxLength(255)
@@ -259,23 +278,29 @@ class TechRegResource extends Resource
                             -> label('Зөвшөөрөл олгосон огноо')
                             -> placeholder('Он сар өдөр')
                             -> required(),
+                        Forms\Components\DatePicker::make('permission_date_expire')
+                            -> native(false)
+                            -> displayFormat('Y-m-d')
+                            -> label('Зөвшөөрөл дуусах огноо')
+                            -> placeholder('Он сар өдөр')
+                            -> required(),
                         Forms\Components\TextInput::make('permitted_person_1')
-                            ->label('Хяналт хийсэн ажилтаны-1 /ЗМХ-ийн удирдлага/ ')
+                            ->label('Хяналт хийсэн ажилтны-1 /ЗМХ-ийн удирдлага/ ')
                             ->maxLength(255)
                             ->required(),
                         Forms\Components\TextInput::make('permitted_person_2')
-                            ->label('Хяналт хийсэн ажилтаны-2 /ХАБЭАХ-ийн удирдлага/ ')
+                            ->label('Хяналт хийсэн ажилтны-2 /ХАБЭАХ-ийн удирдлага/ ')
                             ->maxLength(255)
                             ->required(),
                         Forms\Components\TextInput::make('permitted_person_3')
-                            ->label('Хяналт хийсэн ажилтаны-3 /ШУМТГ-ийн удирдлага/ ')
+                            ->label('Хяналт хийсэн ажилтны-3 /ШУМТГ-ийн удирдлага/ ')
                             ->maxLength(255)
                             ->required(),
                         Forms\Components\TextInput::make('permitted_person_branch_ceo')
                             ->label('Салбарын удирдлага')
                             ->maxLength(255)
                             ->required(),
-                    ])->addable(false)->deletable(false),
+                    ])->addable(false)->deletable(false)->reorderable(false),
                 Forms\Components\Toggle::make('status')
                     ->label('Төлөв')
                     ->default(true)
@@ -325,7 +350,7 @@ class TechRegResource extends Resource
                     ->label('Техникийн арлын дугаар')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('date_of_manufacture')
-                    ->label('Үйлдвэрлэсн огноо')
+                    ->label('Үйлдвэрлэсэн огноо')
                     ->date()
                     ->sortable(),
 //                Tables\Columns\TextColumn::make('date_of_imported')

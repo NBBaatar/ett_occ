@@ -46,7 +46,8 @@ class AppPanelProvider extends PanelProvider
                     -> label('Administrator')
                     -> icon('heroicon-o-cog-6-tooth')
                     -> url('/admin')
-                    -> visible(fn (): bool => auth() -> user() -> isAdmin())
+                    -> visible(fn (): bool => auth() -> user() -> isAdmin()),
+               'logout' => MenuItem::make()->label('Системээс гарах')
             ])
             //Sidebar deer erheer haruulah tohirgoo
 //            -> navigationItems([
@@ -68,6 +69,8 @@ class AppPanelProvider extends PanelProvider
             -> brandLogo(asset('images/logo.png'))
             -> favicon(asset('images/favicon.ico'))
             -> font('Poppins')
+            ->sidebarCollapsibleOnDesktop()
+
             -> discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             -> discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
             -> pages([

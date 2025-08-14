@@ -36,7 +36,8 @@ class TechPanelProvider extends PanelProvider
                     -> label('Administrator')
                     -> icon('heroicon-o-cog-6-tooth')
                     -> url('/admin')
-                    -> visible(fn (): bool => auth() -> user() -> isAdmin())
+                    -> visible(fn (): bool => auth() -> user() -> isAdmin()),
+                'logout' => MenuItem::make()->label('Системээс гарах')
             ])
             -> colors([
                 'danger' => Color::Rose,
@@ -50,6 +51,7 @@ class TechPanelProvider extends PanelProvider
             -> brandLogo(asset('images/logo.png'))
             -> favicon(asset('images/favicon.ico'))
             -> font('Poppins')
+            ->sidebarCollapsibleOnDesktop()
             -> discoverResources(in: app_path('Filament/Tech/Resources'), for: 'App\\Filament\\Tech\\Resources')
             -> discoverPages(in: app_path('Filament/Tech/Pages'), for: 'App\\Filament\\Tech\\Pages')
             -> pages([

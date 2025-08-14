@@ -17,7 +17,7 @@ class TechStatic extends BaseWidget
            return [
                Stat::make('Нийт техник', TechReg::count())
                    ->description('Системд бүртгэгдсэн техник тоо')
-                   ->descriptionIcon('heroicon-m-user-group', IconPosition::Before)
+                   ->descriptionIcon('heroicon-m-adjustments-vertical', IconPosition::Before)
                    ->chart([10,15,55,60,73,87,100,250,350])
                    ->color('success'),
                Stat::make('Нийт компани', Company::count())

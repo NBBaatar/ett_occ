@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TechTypeResource\Pages;
 //use App\Filament\Resources\TechTypeResource\RelationManagers;
+use App\Models\TechSpecs;
 use App\Models\TechType;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -36,12 +37,21 @@ class TechTypeResource extends Resource
                     -> maxLength(255)
                     -> placeholder('Техник төрлийн нэр')
                     -> label('Төрлийн нэр'),
-                Forms\Components\TextInput ::make('specs')
-                    -> required()
-                    -> maxLength(255)
-                    -> placeholder('Техник үзүүлэлт')
-                    -> label('Төрлийн үзүүлэлт'),
-
+                Forms\Components\Repeater ::make('specs')
+                    ->live()
+                    ->label('Техникийн үзүүлэлт')
+                    ->columns()
+                    ->columnSpan(1)
+                  ->schema([
+                      Forms\Components\Select::make('tech_specs_name')
+                        -> live()
+                        -> options(TechSpecs ::all() -> pluck('name', 'name'))
+                        ->native(false)
+                        ->label('Хүчин чадал')
+                        ->searchable()
+                        ->placeholder('Сонгох')
+//                        ->required(),
+                  ])->addable(false)->deletable(false)->reorderable(false),
                 Forms\Components\Select ::make('tech_category_id')
                     -> placeholder(' Сонгох')
                     -> label('Төхникийн ангилал')
@@ -53,7 +63,7 @@ class TechTypeResource extends Resource
                     -> default(true)
                     -> required()
                     -> label('Статус'),
-            ]);
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
@@ -64,10 +74,19 @@ class TechTypeResource extends Resource
                     -> label('Төхникийн төрөл')
                     -> sortable()
                     -> searchable(isIndividual: false, isGlobal: true),
-                Tables\Columns\TextColumn ::make('specs')
-                    -> label('Төхникийн үзүүлэлт')
-                    -> sortable()
-                    -> searchable(isIndividual: false, isGlobal: true),
+                Tables\Columns\TextColumn ::make('specs.tech_specs_name')
+                    ->label('Хүчин чадал')
+                    ->getStateUsing(function ($record) {
+                        if (!$record->specs) return null;
+                        return collect($record->specs)
+                            ->pluck('tech_specs_name')
+                            ->filter()
+                            ->join(', ');
+                    })
+                    ->sortable()
+                    ->searchable(query: function (Builder $query, string $search) {
+                        return $query->whereJsonContains('specs', ['tech_specs_name' => $search]);
+                    }),
                 Tables\Columns\IconColumn ::make('status')
                     -> sortable()
                     -> label('Төлөв')

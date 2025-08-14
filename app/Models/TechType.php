@@ -15,7 +15,9 @@ class TechType extends Model
         'specs',
         'tech_category_id'
         ];
-
+    protected $casts = [
+        'specs' => 'array',
+    ];
     public function techCategory() : BelongsTo
     {
         return $this->belongsTo(TechCategory::class);

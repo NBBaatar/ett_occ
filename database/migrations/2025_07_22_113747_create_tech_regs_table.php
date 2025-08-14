@@ -32,7 +32,7 @@ return new class extends Migration
             $table->boolean('status')->default(1);
             $table->string('property_file')->nullable();
             $table->json('property')->nullable();
-            $table->json('insurance')->nullable();
+//            $table->json('insurance')->nullable();
             $table->json('tech_permission')->nullable();
             $table->timestamps();
         });

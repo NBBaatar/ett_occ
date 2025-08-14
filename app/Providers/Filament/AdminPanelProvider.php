@@ -38,13 +38,15 @@ class AdminPanelProvider extends PanelProvider
                 MenuItem::make()
                 ->label('Цахим үнэмлэх')
                 ->icon('heroicon-o-cog-6-tooth')
-                ->url('/app')
+                ->url('/app'),
+                'logout' => MenuItem::make()->label('Системээс гарах')
             ])
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Техник бүртгэл')
                     ->icon('heroicon-o-cog-6-tooth')
-                    ->url('/tech')
+                    ->url('/tech'),
+                'logout' => MenuItem::make()->label('Системээс гарах')
             ])
              ->colors([
                 'danger' => Color::Rose,
@@ -57,6 +59,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('Эрдэнэс Тавантолгой ХК')
             ->brandLogo(asset('images/logo.png'))
             ->favicon(asset('images/favicon.ico'))
+            ->sidebarCollapsibleOnDesktop()
             ->font('Poppins')
             ->topNavigation()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

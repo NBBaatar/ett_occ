@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tech_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('specs');
+            $table->json('specs')->nullable();
             $table->boolean('status')->default(true);
             $table->foreignId('tech_category_id')->constrained('tech_categories')->cascadeOnDelete()->nullable();
             $table->timestamps();

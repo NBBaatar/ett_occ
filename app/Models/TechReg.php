@@ -27,7 +27,7 @@ class TechReg extends Model
         'status',
         'property_file',
         'property',
-        'insurance',
+//        'insurance',
         'tech_permission'
     ];
     protected $casts = [
