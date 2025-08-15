@@ -19,7 +19,7 @@ class TechMarkResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-truck';
     protected static ?string $navigationGroup = 'Техник';
-    protected static ?string $pluralLabel = 'Техникийн марк';
+    protected static ?string $pluralLabel = 'Техникийн бренд';
     protected static ?int $navigationSort = 3;
 
     public static function getNavigationBadge(): ?string
@@ -61,8 +61,8 @@ class TechMarkResource extends Resource
     {
         return $table
             -> columns([
-                Tables\Columns\TextColumn ::make('name')
-                    -> label('Техникийн Марк')
+                Tables\Columns\TextColumn ::make('brand')
+                    -> label('Техникийн Бренд')
                     -> sortable()
                     -> searchable(isIndividual: false, isGlobal: true),
                 Tables\Columns\IconColumn ::make('status')

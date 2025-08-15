@@ -135,17 +135,33 @@ class TechRegResource extends Resource
                     ->label('Техникийн арлын дугаар')
                     ->maxLength(255)
                     ->required(),
-                Forms\Components\DatePicker::make('date_of_manufacture')
+                Forms\Components\Select::make('date_of_manufacture')
+                    ->options(function () {
+                        $years = [];
+                        for ($year = 2000; $year <= 2030; $year++) {
+                            $years[$year] = $year;
+                        }
+                        return $years;
+                    })
                     -> native(false)
-                    -> displayFormat('Y-m-d')
+//                    -> displayFormat('Y-m-d')
                     -> label('Үйлдвэрлэсэн огноо')
                     -> placeholder('Он сар өдөр')
+                    ->searchable()
                     -> required(),
-                Forms\Components\DatePicker::make('date_of_imported')
+                Forms\Components\Select::make('date_of_imported')
                     -> native(false)
-                    -> displayFormat('Y-m-d')
+                    ->options(function () {
+                        $years = [];
+                        for ($year = 2000; $year <= 2030; $year++) {
+                            $years[$year] = $year;
+                        }
+                        return $years;
+                    })
+//                    -> displayFormat('Y')
                     -> label('Импортлогдсон огноо')
                     -> placeholder('Он сар өдөр')
+                    ->searchable()
                     -> required()
             ]) -> columns(2),
                 Forms\Components\Repeater ::make('tech_tewsh')

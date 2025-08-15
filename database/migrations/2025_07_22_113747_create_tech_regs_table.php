@@ -24,8 +24,10 @@ return new class extends Migration
             $table->string('tech_number')->nullable();
             $table->string('tech_park_number')->nullable();
             $table->string('tech_aral_numebr')->nullable();
-            $table -> date('date_of_manufacture');
-            $table -> date('date_of_imported');
+//            $table -> date('date_of_manufacture');
+            $table -> year('date_of_manufacture');
+//            $table -> date('date_of_imported');
+            $table -> year('date_of_imported');
             $table->json('tech_tewsh')->nullable();
             $table->string('radio_id')->nullable();
             $table->string('radio_serial')->nullable();
