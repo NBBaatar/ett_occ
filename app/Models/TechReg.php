@@ -14,6 +14,7 @@ class TechReg extends Model
         'sub_company_id',
         'tech_category_id',
         'tech_type_id',
+        'tech_brand_id',
         'tech_mark_id',
         'tech_specs_id',
         'tech_number',
@@ -70,5 +71,9 @@ class TechReg extends Model
     public function TechSpecs() : BelongsTo
     {
         return $this->belongsTo(TechSpecs::class);
+    }
+    public function TechBrand() : BelongsTo
+    {
+        return $this->belongsTo(TechBrand::class);
     }
 }

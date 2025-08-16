@@ -19,6 +19,7 @@ return new class extends Migration
             $table -> foreignId('sub_company_id') -> constrained('sub_companies') -> cascadeOnDelete() -> nullable();
             $table->foreignId('tech_category_id')->constrained('tech_categories')->cascadeOnDelete()->nullable();
             $table->foreignId('tech_type_id')->constrained('tech_types')->cascadeOnDelete()->nullable();
+            $table -> foreignId('tech_brand_id') -> constrained('tech_brands') -> cascadeOnDelete() -> nullable();
             $table -> foreignId('tech_mark_id') -> constrained('tech_marks') -> cascadeOnDelete() -> nullable();
             $table -> foreignId('tech_specs_id') -> constrained('tech_specs') -> cascadeOnDelete() -> nullable();
             $table->string('tech_number')->nullable();

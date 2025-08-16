@@ -9,6 +9,7 @@ use App\Models\CoOperation;
 use App\Models\MiningSite;
 use App\Models\Property;
 use App\Models\SubCompany;
+use App\Models\TechBrand;
 use App\Models\TechCategory;
 use App\Models\TechMark;
 use App\Models\TechReg;
@@ -107,11 +108,19 @@ class TechRegResource extends Resource
                         ->searchable()
                         ->placeholder('Сонгох')
                         ->required(),
+                        Forms\Components\Select::make('tech_brand_id')
+                            -> live()
+                            -> options(TechBrand ::all() -> pluck('name', 'id'))
+                            ->native(false)
+                            ->label('Техникийн Бренд')
+                            ->searchable()
+                            ->placeholder('Сонгох')
+                            ->required(),
                     Forms\Components\Select::make('tech_mark_id')
                         -> live()
                         -> options(TechMark ::all() -> pluck('name', 'id'))
                         ->native(false)
-                        ->label('Техникийн марк, загвар, бренд')
+                        ->label('Техникийн марк')
                         ->searchable()
                         ->placeholder('Сонгох')
                         ->required(),

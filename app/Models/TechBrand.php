@@ -6,37 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class TechType extends Model
+class TechBrand extends Model
 {
-
     protected $fillable = [
         'name',
         'status',
-        'specs',
-        'tech_category_id'
-        ];
-    protected $casts = [
-        'specs' => 'array',
+        'tech_type_id'
     ];
-    public function techCategory() : BelongsTo
-    {
-        return $this->belongsTo(TechCategory::class);
-    }
-    public function techMarks() : HasMany
-    {
-        return $this->hasMany(TechMark::class);
-    }
     public function TechRegs() : HasMany
     {
         return $this->hasMany(TechReg::class);
     }
-    public function techSpecs() : HasMany
+    public function techType() : BelongsTo
     {
-        return $this->hasMany(TechSpecs::class);
+        return $this->belongsTo(TechType::class);
     }
     public function techBrands() : HasMany
     {
         return $this->hasMany(TechBrand::class);
     }
-
 }

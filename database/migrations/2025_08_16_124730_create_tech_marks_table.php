@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('tech_marks', function (Blueprint $table) {
             $table->id();
-            $table->string('brand');
             $table->string('name');
             $table->boolean('status')->default(true);
-            $table->foreignId('tech_type_id')->constrained('tech_types')->cascadeOnDelete()->nullable();
+            $table->foreignId('tech_brand_id')->constrained('tech_brands')->cascadeOnDelete()->nullable();
             $table->timestamps();
         });
     }

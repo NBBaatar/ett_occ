@@ -10,13 +10,12 @@ class TechMark extends Model
 {
     protected $fillable = [
         'name',
-        'brand',
         'status',
-        'tech_type_id'
+        'tech_brand_id'
     ];
-    public function techType() : BelongsTo
+    public function techBrand() : BelongsTo
     {
-        return $this->belongsTo(TechType::class);
+        return $this->belongsTo(TechBrand::class);
     }
     public function TechRegs() : HasMany
     {

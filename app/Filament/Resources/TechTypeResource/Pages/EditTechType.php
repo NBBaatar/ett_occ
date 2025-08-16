@@ -11,10 +11,11 @@ class EditTechType extends EditRecord
     protected static string $resource = TechTypeResource::class;
     protected static ?string $title = 'Техник төрлийн мэдээлэл засварлах';
 
+
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()->label('Устгах'),
         ];
     }
 }

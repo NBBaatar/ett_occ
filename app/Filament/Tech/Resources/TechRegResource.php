@@ -9,6 +9,7 @@ use App\Models\CoOperation;
 use App\Models\MiningSite;
 use App\Models\Property;
 use App\Models\SubCompany;
+use App\Models\TechBrand;
 use App\Models\TechCategory;
 use App\Models\TechMark;
 use App\Models\TechReg;
@@ -37,6 +38,7 @@ class TechRegResource extends Resource
         return static ::getModel() ::count();
     }
     public static function form(Form $form): Form
+
     {
         return $form
             ->schema([
@@ -106,11 +108,19 @@ class TechRegResource extends Resource
                             ->searchable()
                             ->placeholder('Сонгох')
                             ->required(),
+                        Forms\Components\Select::make('tech_brand_id')
+                            -> live()
+                            -> options(TechBrand ::all() -> pluck('name', 'id'))
+                            ->native(false)
+                            ->label('Техникийн Бренд')
+                            ->searchable()
+                            ->placeholder('Сонгох')
+                            ->required(),
                         Forms\Components\Select::make('tech_mark_id')
                             -> live()
                             -> options(TechMark ::all() -> pluck('name', 'id'))
                             ->native(false)
-                            ->label('Техникийн марк, загвар, бренд')
+                            ->label('Техникийн марк')
                             ->searchable()
                             ->placeholder('Сонгох')
                             ->required(),
@@ -134,18 +144,6 @@ class TechRegResource extends Resource
                             ->label('Техникийн арлын дугаар')
                             ->maxLength(255)
                             ->required(),
-//                        Forms\Components\DatePicker::make('date_of_manufacture')
-//                            -> native(false)
-//                            -> displayFormat('Y-m-d')
-//                            -> label('Үйлдвэрлэсэн огноо')
-//                            -> placeholder('Он сар өдөр')
-//                            -> required(),
-//                        Forms\Components\DatePicker::make('date_of_imported')
-//                            -> native(false)
-//                            -> displayFormat('Y-m-d')
-//                            -> label('Импортлогдсон огноо')
-//                            -> placeholder('Он сар өдөр')
-//                            -> required()
                         Forms\Components\Select::make('date_of_manufacture')
                             ->options(function () {
                                 $years = [];

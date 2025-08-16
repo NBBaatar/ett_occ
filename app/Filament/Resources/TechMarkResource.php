@@ -19,8 +19,8 @@ class TechMarkResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-truck';
     protected static ?string $navigationGroup = 'Техник';
-    protected static ?string $pluralLabel = 'Техникийн бренд';
-    protected static ?int $navigationSort = 3;
+    protected static ?string $pluralLabel = 'Техникийн марк';
+    protected static ?int $navigationSort = 4;
 
     public static function getNavigationBadge(): ?string
     {
@@ -31,25 +31,24 @@ class TechMarkResource extends Resource
     {
         return $form
             -> schema([
-                Forms\Components\TextInput ::make('brand')
-                    -> label('Техникийн бренд ')
-                    -> placeholder('Техникийн бренд оруулах')
-                    -> required()
-                    -> maxLength(255),
+//                Forms\Components\TextInput ::make('brand')
+//                    -> label('Техникийн бренд ')
+//                    -> placeholder('Техникийн бренд оруулах')
+//                    -> required()
+//                    -> maxLength(255),
+                Forms\Components\Select ::make('tech_brand_id')
+                    -> native(false)
+                    -> relationship('techBrand', 'name')
+                    -> placeholder('Сонгох')
+                    -> label('Техникийн бренд')
+                    -> searchable()
+                    -> preload()
+                    -> required(),
                 Forms\Components\TextInput ::make('name')
                     -> label('Техникийн марк ')
                     -> placeholder('Техникийн марк оруулах')
                     -> required()
                     -> maxLength(255),
-
-                Forms\Components\Select ::make('tech_type_id')
-                    -> native(false)
-                    -> relationship('techType', 'name')
-                    -> placeholder('Сонгох')
-                    -> label('Техникийн төрөл')
-                    -> searchable()
-                    -> preload()
-                    -> required(),
                 Forms\Components\Toggle ::make('status')
                     -> required()
                     -> default(true)
@@ -61,7 +60,7 @@ class TechMarkResource extends Resource
     {
         return $table
             -> columns([
-                Tables\Columns\TextColumn ::make('brand')
+                Tables\Columns\TextColumn ::make('techBrand.name')
                     -> label('Техникийн Бренд')
                     -> sortable()
                     -> searchable(isIndividual: false, isGlobal: true),
@@ -69,8 +68,8 @@ class TechMarkResource extends Resource
                     -> label('Төлөв')
                     -> sortable()
                     -> boolean(),
-                Tables\Columns\TextColumn ::make('techType.name')
-                    -> label('Төхникийн төрөл')
+                Tables\Columns\TextColumn ::make('name')
+                    -> label('Төхникийн Марк')
                     -> numeric()
                     -> sortable(),
                 Tables\Columns\TextColumn ::make('created_at')
