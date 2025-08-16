@@ -158,19 +158,19 @@ class TechRegResource extends Resource
                     -> placeholder('Он сар өдөр')
                     ->searchable()
                     -> required(),
-                Forms\Components\Select::make('date_of_imported')
+                Forms\Components\DatePicker::make('date_of_imported')
                     -> native(false)
-                    ->options(function () {
-                        $years = [];
-                        for ($year = 2000; $year <= 2030; $year++) {
-                            $years[$year] = $year;
-                        }
-                        return $years;
-                    })
-//                    -> displayFormat('Y')
+//                    ->options(function () {
+//                        $years = [];
+//                        for ($year = 2000; $year <= 2030; $year++) {
+//                            $years[$year] = $year;
+//                        }
+//                        return $years;
+//                    })
+                    -> displayFormat('Y-m-d')
                     -> label('Импортлогдсон огноо')
                     -> placeholder('Он сар өдөр')
-                    ->searchable()
+//                    ->searchable()
                     -> required()
             ]) -> columns(2),
                 Forms\Components\Repeater ::make('tech_tewsh')

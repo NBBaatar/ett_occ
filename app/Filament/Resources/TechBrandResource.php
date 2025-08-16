@@ -41,6 +41,8 @@ class TechBrandResource extends Resource
                     ->relationship('techType', 'name')
                     ->live()
                     -> placeholder('Сонгох')
+                    ->preload()
+                    ->searchable()
                     ->label('Төхникийн төрөл')
                     ->required(),
             ]);
