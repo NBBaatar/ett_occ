@@ -158,7 +158,7 @@ class TechRegResource extends Resource
                             -> placeholder('Он сар өдөр')
                             ->searchable()
                             -> required(),
-                        Forms\Components\Select::make('date_of_imported')
+                        Forms\Components\DatePicker::make('date_of_imported')
                             -> native(false)
 //                            ->options(function () {
 //                                $years = [];

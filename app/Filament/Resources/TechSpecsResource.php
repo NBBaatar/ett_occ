@@ -32,11 +32,11 @@ class TechSpecsResource extends Resource
         return $form
             -> schema([
 
-                Forms\Components\Select ::make('tech_type_id')
+                Forms\Components\Select ::make('tech_mark_id')
                     -> native(false)
-                    -> relationship('techType', 'name')
+                    -> relationship('techMark', 'name')
                     -> placeholder('Сонгох')
-                    -> label('Техникийн төрөл сонгох')
+                    -> label('Техникийн марк сонгох')
                     -> searchable()
                     -> required()
                     -> preload(),
@@ -60,8 +60,8 @@ class TechSpecsResource extends Resource
                     -> label('Хүчин чадал')
                     -> sortable()
                     -> searchable(),
-                Tables\Columns\TextColumn ::make('techType.name')
-                    -> label('Техникийн төрөл')
+                Tables\Columns\TextColumn ::make('techMark.name')
+                    -> label('Техникийн марк')
                     -> sortable()
                     -> numeric()
                     -> sortable(),

@@ -21,4 +21,8 @@ class TechMark extends Model
     {
         return $this->hasMany(TechReg::class);
     }
+    public function TechSpecs() : HasMany
+    {
+        return $this->hasMany(TechSpecs::class);
+    }
 }

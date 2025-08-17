@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tech_specs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('tech_type_id')->constrained('tech_types')->cascadeOnDelete()->nullable();
+            $table->foreignId('tech_mark_id')->constrained('tech_marks')->cascadeOnDelete()->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
