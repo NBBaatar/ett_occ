@@ -29,6 +29,7 @@ Route::get('search2', [IndexController::class, 'search2']);
 Route::get('search3', [IndexController::class, 'search3']);
 Route::get('search4', [IndexController::class, 'search4']);
 Route::get('search5', [IndexController::class, 'search5']);
+Route::get('search6', [IndexController::class, 'search6']);
 Route::get('/indexed', function () {
     return view('indexed');
 });

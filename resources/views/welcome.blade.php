@@ -28,27 +28,50 @@
         }
 
         .gate-icon {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: rgb(231, 137, 50);
         }
 
         .gate-number {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: rgb(231, 137, 50);
         }
 
         .footer-gradient {
-            background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+            background: rgb(231, 137, 50);
+        }
+
+        .header-color {
+            color: rgb(231, 137, 50);
+        }
+
+        .button-gradient {
+            background: rgb(231, 137, 50);
+        }
+
+        .button-gradient:hover {
+            background: rgb(211, 117, 30);
         }
     </style>
 </head>
 
-{{--<body class="font-sans bg-gradient-to-br from-blue-50 to-amber-50 min-h-screen">--}}
 <body class="font-sans bg-gradient-to-br from-gray-100 to-amber-100 min-h-screen">
 <!-- Header -->
 <div class="px-4 py-2 mx-auto w-full">
     <div class="sm:flex items-stretch justify-between grow py-2 px-2">
-        <div class="flex flex-col flex-wrap justify-center mb-1 mr-3 lg:mb-0">
+{{--        <div class="flex flex-col flex-wrap justify-center mb-1 mr-3 lg:mb-0">--}}
+{{--            <div class='drop-shadow-lg'>--}}
+{{--                <h1 class='header-color font-bold text-3xl md:text-4xl p-2 m-2 text-center'>"Эрдэнэс Тавантолгой" ХК</h1>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+        <div class="flex items-center gap-x-4">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <img src="{{ asset('images/logo.png') }}"
+                     alt="Эрдэнэс Тавантолгой ХК лого"
+                     class="h-16 w-16 md:h-20 md:w-20 object-contain">
+            </div>
+            <!-- Нэр -->
             <div class='drop-shadow-lg'>
-                <h1 class='text-indigo-900 font-bold text-3xl md:text-4xl p-2 m-2 text-center'>"Эрдэнэс Тавантолгой" ХК</h1>
+                <h1 class='header-color font-bold text-2xl md:text-3xl lg:text-4xl'>"Эрдэнэс Тавантолгой" ХК</h1>
             </div>
         </div>
         <div class="flex items-center lg:shrink-0 lg:flex-nowrap">
@@ -119,7 +142,7 @@
             </div>
 
             <!-- Button -->
-            <a href="/6" class="block w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+            <a href="/6" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 Нэвтрэх
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
@@ -157,7 +180,7 @@
             </div>
 
             <!-- Button -->
-            <a href="/1" class="block w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+            <a href="/1" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 Нэвтрэх
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
@@ -195,7 +218,7 @@
             </div>
 
             <!-- Button -->
-            <a href="/2" class="block w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+            <a href="/2" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 Нэвтрэх
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
@@ -234,7 +257,7 @@
             </div>
 
             <!-- Button -->
-            <a href="/3" class="block w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+            <a href="/3" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 Нэвтрэх
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
@@ -273,7 +296,7 @@
             </div>
 
             <!-- Button -->
-            <a href="/4" class="block w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+            <a href="/4" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 Нэвтрэх
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
@@ -312,7 +335,7 @@
             </div>
 
             <!-- Button -->
-            <a href="/5" class="block w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+            <a href="/5" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 Нэвтрэх
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
