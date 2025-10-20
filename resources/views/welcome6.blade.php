@@ -38,7 +38,7 @@
 
 <body class="font-sans bg-gradient-to-br from-amber-50 to-amber-100 min-h-screen flex flex-col">
 <!-- Header -->
-<header class="custom-primary-gradient text-white shadow-lg">
+<header class=" text-white shadow-lg">
     <div class="container mx-auto px-4 py-3">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="flex items-center mb-4 md:mb-0">
@@ -51,7 +51,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Эрдэнэс Тавантолгой ХК лого" class="h-10 w-auto">
                 </div>
                 <div>
-                    <h1 class="text-2xl font-bold">"Эрдэнэс Тавантолгой" ХК</h1>
+                    <h1 class="custom-primary-light-text text-2xl font-bold">"Эрдэнэс Тавантолгой" ХК</h1>
                     <p class="custom-primary-light-text text-sm">Карт уншигч систем</p>
                 </div>
             </div>

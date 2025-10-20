@@ -147,13 +147,13 @@ class IndexController extends Controller
                                         <p class="text-xl text-blue-600 font-semibold mb-2">' . $row->appointment->name . '</p>
                                         <p class="text-lg text-gray-500 font-medium">Ажилтны код: №' . $row->employee_uid . '</p>
                                     </div>
-                                    <!-- Дэлгэрэнгүй мэдээлэл -->
+                                   <!-- Дэлгэрэнгүй мэдээлэл -->
                                     <div class="flex flex-col gap-1">
-                                        <div class="rounded-xl bg-gradient-to-br from-green-50 to-green-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Түншлэл</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->coOperation->name . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Компани</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->company->name . '</p>
                                         </div>
@@ -161,7 +161,7 @@ class IndexController extends Controller
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Ажилд орсон</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_employement . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Үнэмлэх дуусах</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_expiration . '</p>
                                         </div>
@@ -257,13 +257,13 @@ class IndexController extends Controller
                                         <p class="text-xl text-blue-600 font-semibold mb-2">' . $row->appointment->name . '</p>
                                         <p class="text-lg text-gray-500 font-medium">Ажилтны код: №' . $row->employee_uid . '</p>
                                     </div>
-                                    <!-- Дэлгэрэнгүй мэдээлэл -->
+                                   <!-- Дэлгэрэнгүй мэдээлэл -->
                                     <div class="flex flex-col gap-1">
-                                        <div class="rounded-xl bg-gradient-to-br from-green-50 to-green-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Түншлэл</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->coOperation->name . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Компани</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->company->name . '</p>
                                         </div>
@@ -271,7 +271,7 @@ class IndexController extends Controller
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Ажилд орсон</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_employement . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Үнэмлэх дуусах</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_expiration . '</p>
                                         </div>
@@ -367,13 +367,13 @@ class IndexController extends Controller
                                         <p class="text-xl text-blue-600 font-semibold mb-2">' . $row->appointment->name . '</p>
                                         <p class="text-lg text-gray-500 font-medium">Ажилтны код: №' . $row->employee_uid . '</p>
                                     </div>
-                                    <!-- Дэлгэрэнгүй мэдээлэл -->
+                                   <!-- Дэлгэрэнгүй мэдээлэл -->
                                     <div class="flex flex-col gap-1">
-                                        <div class="rounded-xl bg-gradient-to-br from-green-50 to-green-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Түншлэл</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->coOperation->name . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Компани</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->company->name . '</p>
                                         </div>
@@ -381,7 +381,7 @@ class IndexController extends Controller
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Ажилд орсон</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_employement . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Үнэмлэх дуусах</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_expiration . '</p>
                                         </div>
@@ -479,11 +479,11 @@ class IndexController extends Controller
                                     </div>
                                     <!-- Дэлгэрэнгүй мэдээлэл -->
                                     <div class="flex flex-col gap-1">
-                                        <div class="rounded-xl bg-gradient-to-br from-green-50 to-green-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Түншлэл</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->coOperation->name . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Компани</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->company->name . '</p>
                                         </div>
@@ -491,7 +491,7 @@ class IndexController extends Controller
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Ажилд орсон</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_employement . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Үнэмлэх дуусах</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_expiration . '</p>
                                         </div>
@@ -587,13 +587,13 @@ class IndexController extends Controller
                                         <p class="text-xl text-blue-600 font-semibold mb-2">' . $row->appointment->name . '</p>
                                         <p class="text-lg text-gray-500 font-medium">Ажилтны код: №' . $row->employee_uid . '</p>
                                     </div>
-                                    <!-- Дэлгэрэнгүй мэдээлэл -->
+                                   <!-- Дэлгэрэнгүй мэдээлэл -->
                                     <div class="flex flex-col gap-1">
-                                        <div class="rounded-xl bg-gradient-to-br from-green-50 to-green-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Түншлэл</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->coOperation->name . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Компани</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->company->name . '</p>
                                         </div>
@@ -601,7 +601,7 @@ class IndexController extends Controller
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Ажилд орсон</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_employement . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Үнэмлэх дуусах</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_expiration . '</p>
                                         </div>
@@ -699,11 +699,11 @@ class IndexController extends Controller
                                     </div>
                                     <!-- Дэлгэрэнгүй мэдээлэл -->
                                     <div class="flex flex-col gap-1">
-                                        <div class="rounded-xl bg-gradient-to-br from-green-50 to-green-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Түншлэл</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->coOperation->name . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Компани</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->company->name . '</p>
                                         </div>
@@ -711,7 +711,7 @@ class IndexController extends Controller
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Ажилд орсон</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_employement . '</p>
                                         </div>
-                                        <div class="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+                                        <div class="rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 p-4">
                                             <p class="text-sm font-semibold text-gray-600 mb-2">Үнэмлэх дуусах</p>
                                             <p class="text-sm font-bold text-gray-900">' . $row->date_of_expiration . '</p>
                                         </div>
