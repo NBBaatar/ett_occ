@@ -7,25 +7,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-
-class VerifyIsAdmin
+class IsIt
 {
     /**
      * Handle an incoming request.
      *
-     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-//        if (Auth ::user() && Auth ::user() -> is_admin) {
-//            return $next($request);
-//        }
         $user = Auth::user();
-        if (!$user->isAdmin()) {
-            abort(403, 'Та тухайн Admin хуудсанд хандах эрхгүй байна.');
+        if (!$user->isIt()) {
+            abort(403, 'Та тухайн хуудсанд хандах эрхгүй байна.');
         }
         return $next($request);
     }

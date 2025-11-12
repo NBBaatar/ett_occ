@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
@@ -36,3 +37,6 @@ Route::get('/indexed', function () {
 Route::post('search', [IndexController::class, 'search']);
 Route::get('logs', [IndexController::class, 'logs']);
 Route::get('logs_error', [IndexController::class, 'logs_error']);
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

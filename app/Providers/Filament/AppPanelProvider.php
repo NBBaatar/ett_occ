@@ -6,6 +6,7 @@ use App\Filament\App\Pages\Tenancy\EditTeamProfile;
 use App\Filament\App\Pages\Tenancy\RegisterTeam;
 use App\Filament\Helper\CustomLogin;
 use App\Filament\Widgets\IframeWidget;
+use App\Http\Middleware\IsCard;
 use App\Http\Middleware\VerifyIsAdmin;
 use App\Http\Middleware\VerifyIsApp;
 use App\Models\Team;
@@ -92,9 +93,10 @@ class AppPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-            ])
-            -> authMiddleware([
-                Authenticate::class,
+                IsCard::class,
             ]);
+//            -> authMiddleware([
+//                Authenticate::class,
+//            ]);
     }
 }

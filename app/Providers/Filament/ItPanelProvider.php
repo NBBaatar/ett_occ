@@ -3,11 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Helper\CustomLogin;
-use App\Filament\Widgets\IframeWidget;
 use App\Http\Middleware\IsIt;
-use App\Http\Middleware\IsTech;
-use App\Http\Middleware\VerifyIsAdmin;
-use App\Http\Middleware\VerifyIsTech;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -25,14 +21,21 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class TechPanelProvider extends PanelProvider
+class ItPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            -> id('tech')
-            -> path('tech')
-            -> login(CustomLogin::class)
+            ->id('it')
+            ->path('it')
+            ->colors([
+                'danger' => Color::Rose,
+                'gray' => Color::Gray,
+                'info' => Color::Blue,
+                'primary' => '#ef9420',
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
+            ])
             -> userMenuItems([
                 MenuItem ::make()
                     -> label('Administrator')
@@ -41,30 +44,22 @@ class TechPanelProvider extends PanelProvider
                     -> visible(fn (): bool => auth() -> user() -> isAdmin()),
                 'logout' => MenuItem::make()->label('Системээс гарах')
             ])
-            -> colors([
-                'danger' => Color::Rose,
-                'gray' => Color::Gray,
-                'info' => Color::Blue,
-                'primary' => '#ef9420',
-                'success' => Color::Emerald,
-                'warning' => Color::Orange,
-            ])
+            ->login(CustomLogin::class)
             -> brandName('Эрдэнэс Тавантолгой ХК - Цахим бүртгэл')
             -> brandLogo(asset('images/logo.png'))
             -> favicon(asset('images/favicon.ico'))
             -> font('Poppins')
-            ->sidebarCollapsibleOnDesktop()
-            -> discoverResources(in: app_path('Filament/Tech/Resources'), for: 'App\\Filament\\Tech\\Resources')
-            -> discoverPages(in: app_path('Filament/Tech/Pages'), for: 'App\\Filament\\Tech\\Pages')
-            -> pages([
+            ->discoverResources(in: app_path('Filament/It/Resources'), for: 'App\\Filament\\It\\Resources')
+            ->discoverPages(in: app_path('Filament/It/Pages'), for: 'App\\Filament\\It\\Pages')
+            ->pages([
                 Pages\Dashboard::class,
             ])
-            -> discoverWidgets(in: app_path('Filament/Tech/Widgets'), for: 'App\\Filament\\Tech\\Widgets')
-            -> widgets([
-//                      Widgets\AccountWidget::class,
-                // Widgets\FilamentInfoWidget::class,
+            ->discoverWidgets(in: app_path('Filament/It/Widgets'), for: 'App\\Filament\\It\\Widgets')
+            ->widgets([
+                Widgets\AccountWidget::class,
+                Widgets\FilamentInfoWidget::class,
             ])
-            -> middleware([
+            ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
                 StartSession::class,
@@ -74,9 +69,9 @@ class TechPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                IsTech::class,
+                IsIt::class,
             ]);
-//            -> authMiddleware([
+//            ->authMiddleware([
 //                Authenticate::class,
 //            ]);
     }

@@ -43,6 +43,14 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->userMenuItems([
                 MenuItem::make()
+                    ->label('Мэдээлэл технологи')
+                    -> visible(fn (): bool => auth() -> user() -> isIt())
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->url('/it'),
+                'logout' => MenuItem::make()->label('Системээс гарах')
+            ])
+            ->userMenuItems([
+                MenuItem::make()
                     ->label('Техник бүртгэл')
                     ->icon('heroicon-o-cog-6-tooth')
                     ->url('/tech'),

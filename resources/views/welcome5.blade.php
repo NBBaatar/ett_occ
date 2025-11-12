@@ -74,8 +74,8 @@
                     </button>
 
                     <div id="dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl z-10 border border-gray-200">
-                        <a href="/app" class="block px-4 py-3 text-sm text-gray-700 hover:bg-amber-50 rounded-t-lg transition-colors">Цахим бүртгэлд нэвтрэх</a>
-                        <a href="/tech" class="block px-4 py-3 text-sm text-gray-700 hover:bg-amber-50 rounded-b-lg transition-colors">Техник бүртгэлд нэвтрэх</a>
+                        <a href="/login" class="block px-4 py-3 text-sm text-gray-700 hover:bg-amber-50 rounded-t-lg transition-colors">Системд нэвтрэх</a>
+{{--                        <a href="/tech" class="block px-4 py-3 text-sm text-gray-700 hover:bg-amber-50 rounded-b-lg transition-colors">Техник бүртгэлд нэвтрэх</a>--}}
                     </div>
                 </div>
             </div>

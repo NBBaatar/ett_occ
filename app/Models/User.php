@@ -29,6 +29,7 @@ class User extends Authenticatable implements HasTenants, FilamentUser
         'email',
         'password',
         'is_admin',
+        'is_it',
         'is_card',
         'is_tech',
         'is_client',
@@ -56,8 +57,10 @@ class User extends Authenticatable implements HasTenants, FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_admin' => 'boolean',
+            'is_it' => 'boolean',
             'is_card' => 'boolean',
             'is_tech' => 'boolean',
+            'is_client' => 'boolean',
         ];
     }
 
@@ -81,6 +84,9 @@ class User extends Authenticatable implements HasTenants, FilamentUser
         if ($panel -> getId() === 'admin') {
             return str_ends_with($this -> is_admin, '1');
         }
+        if ($panel -> getId() === 'it') {
+            return str_ends_with($this -> is_it, '1');
+        }
         if ($panel -> getId() === 'app') {
             return str_ends_with($this -> is_card || $this -> is_client, '1');
         }
@@ -94,6 +100,10 @@ class User extends Authenticatable implements HasTenants, FilamentUser
     public function isAdmin(): bool
     {
         return $this -> is_admin === true;
+    }
+    public function isIt(): bool
+    {
+        return $this -> is_it === true;
     }
 
     public function isCard(): bool
