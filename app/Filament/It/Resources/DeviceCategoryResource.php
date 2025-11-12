@@ -17,8 +17,13 @@ class DeviceCategoryResource extends Resource
 {
     protected static ?string $model = DeviceCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-cog';
+    protected static ?string $pluralLabel = 'Ангилал';
+    protected static ?string $navigationGroup = 'Менежмент';
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
     public static function form(Form $form): Form
     {
         return $form

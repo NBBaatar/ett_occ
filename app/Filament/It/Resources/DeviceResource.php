@@ -7,6 +7,7 @@ use App\Filament\It\Resources\DeviceResource\RelationManagers;
 use App\Models\Device;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -17,8 +18,14 @@ class DeviceResource extends Resource
 {
     protected static ?string $model = Device::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-queue-list';
+    protected static ?string $pluralLabel = 'Төхөөрөмж';
+    protected static ?string $navigationGroup = 'Бүртгэл';
+    protected static ?int $navigationSort = 1;
+    public static function getNavigationBadge(): ?string
+    {
+        return static ::getModel() ::count();
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -29,8 +36,33 @@ class DeviceResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('data')
-                    ->required(),
+                Forms\Components\Repeater ::make('data')
+                    ->label('Data')
+                    ->schema([
+                        Forms\Components\Select::make('device_type')
+                            ->label('Select Device')
+                            ->native(false)
+                            ->live()
+                            ->options([
+                                'camera' => 'camera',
+                                'network' => 'network',
+                                'switch' => 'switch',
+                                'wireless' => 'wireless',
+                                'printer' => 'printer',
+                                'computer' => 'computer',
+                                'server' => 'server',
+                            ])
+                            ->required(),
+                        Forms\Components\TextInput::make('location')
+                        ->required()
+                        ->maxLength(255)
+                        ->label('Location')
+                        ->placeholder('Insert Location')
+                    ])->addable(false)
+                    ->deletable(false)
+                    ->reorderable(false)
+                    -> columns(2)
+                    ->columnSpan('full'),
                 Forms\Components\Toggle::make('status')
                     ->required(),
             ]);
@@ -44,7 +76,26 @@ class DeviceResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Device Name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('data.device_type')
+                    ->label('Device Type')
+                    ->getStateUsing(function ($record) {
+                        if (!$record->data) return null;
+                        return collect($record->data)
+                            ->pluck('device_type')
+                            ->filter()
+                            ->join(', ');
+                    }),
+                Tables\Columns\TextColumn::make('data.location')
+                    ->label('Device Location')
+                    ->getStateUsing(function ($record) {
+                        if (!$record->data) return null;
+                        return collect($record->data)
+                            ->pluck('location')
+                            ->filter()
+                            ->join(', ');
+                    }),
                 Tables\Columns\IconColumn::make('status')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

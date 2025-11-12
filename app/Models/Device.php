@@ -10,7 +10,7 @@ class Device extends Model
     protected $fillable = [
         'name',
         'device_category_id',
-        'data'.
+        'data',
         'status',
     ];
     protected $casts = ['data' => 'array'];

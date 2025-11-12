@@ -306,7 +306,7 @@
             margin: 0 auto;
         }
 
-        /* Гоёмсог Divider Styles */
+        /* Divider Styles */
         .fancy-divider {
             display: flex;
             align-items: center;

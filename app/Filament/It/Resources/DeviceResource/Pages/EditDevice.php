@@ -9,6 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditDevice extends EditRecord
 {
     protected static string $resource = DeviceResource::class;
+    protected static ?string $title = 'Төхөөрөмжийн мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
     {

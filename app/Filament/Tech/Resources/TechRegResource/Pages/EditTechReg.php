@@ -12,9 +12,9 @@ class EditTechReg extends EditRecord
     protected static ?string $title = 'Техникийн мэдээлэл засварлах';
 
     protected function getHeaderActions(): array
-    {
-        return [
-            Actions\DeleteAction::make(),
-        ];
-    }
+{
+    return [
+        Actions\DeleteAction::make(),
+    ];
+}
 }
