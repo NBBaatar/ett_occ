@@ -152,7 +152,7 @@
                 </div>
 
                 <!-- Button -->
-                <a href="/6" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <a href="/post/6" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                     Нэвтрэх
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -190,7 +190,7 @@
                 </div>
 
                 <!-- Button -->
-                <a href="/1" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <a href="/post/1" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                     Нэвтрэх
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -228,7 +228,7 @@
                 </div>
 
                 <!-- Button -->
-                <a href="/2" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <a href="/post/2" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                     Нэвтрэх
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -267,7 +267,7 @@
                 </div>
 
                 <!-- Button -->
-                <a href="/3" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <a href="/post/3" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                     Нэвтрэх
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -306,7 +306,7 @@
                 </div>
 
                 <!-- Button -->
-                <a href="/4" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <a href="/post/4" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                     Нэвтрэх
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -345,7 +345,7 @@
                 </div>
 
                 <!-- Button -->
-                <a href="/5" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <a href="/post/5" class="block w-full py-3 px-4 button-gradient text-white text-center font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                     Нэвтрэх
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
