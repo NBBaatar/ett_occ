@@ -32,6 +32,7 @@ class DeviceResource extends Resource
             ->schema([
                 Forms\Components\Select::make('device_category_id')
                     ->relationship('device_category', 'name')
+                    ->native(false)
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()

@@ -13,7 +13,7 @@ class CreateDevice extends CreateRecord
     protected static ?string $title = 'Шинэ төхөөрөмж үүсгэх';
     protected  function getRedirectUrl(): string
     {
-        return \App\Filament\Tech\Resources\DeviceResource::getUrl('index');
+        return \App\Filament\It\Resources\DeviceResource::getUrl('index');
     }
     protected  function getCreatedNotification(): ?Notification
     {

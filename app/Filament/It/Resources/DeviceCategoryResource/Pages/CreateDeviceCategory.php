@@ -13,7 +13,7 @@ class CreateDeviceCategory extends CreateRecord
     protected static ?string $title = 'Шинэ ангилал үүсгэх';
     protected  function getRedirectUrl(): string
     {
-        return \App\Filament\Tech\Resources\DeviceCategoryResource::getUrl('index');
+        return \App\Filament\It\Resources\DeviceCategoryResource::getUrl('index');
     }
     protected  function getCreatedNotification(): ?Notification
     {
